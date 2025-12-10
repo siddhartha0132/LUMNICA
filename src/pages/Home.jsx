@@ -5,36 +5,36 @@ export default function Home() {
     <div className="bg-[#FAF8F5] min-h-screen font-sans">
 
       {/* HERO */}
-      <section className="py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-20 items-center">
+      <section className="py-20 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-14 items-center">
 
           {/* TEXT */}
-          <div className="md:col-span-5 space-y-8">
-            <h1 className="font-serif text-5xl sm:text-7xl leading-tight text-[#1E2D2B]">
+          <div className="md:col-span-5 space-y-7 text-center md:text-left">
+            <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl leading-tight text-[#1E2D2B]">
               Serving Luxury to  
               World-Class Hospitality
             </h1>
 
-            <p className="text-xl italic text-[#A38E6A]">
+            <p className="text-lg md:text-xl italic text-[#A38E6A]">
               Premium Guest Experiences — Elevated by Design.
             </p>
 
-            <p className="text-[#1E2D2B]/80 text-lg leading-relaxed max-w-md">
+            <p className="text-[#1E2D2B]/80 text-base md:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
               LUMNICA crafts refined luxury care essentials for hotels, resorts, and premium accommodations —
               enhancing every guest touchpoint with elegance, quality, and unforgettable comfort.
             </p>
 
-            <div className="flex gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
               <a
                 href="/products"
-                className="px-10 py-3 bg-white border border-[#1E2D2B] text-[#1E2D2B] hover:bg-[#A38E6A] hover:text-white transition uppercase tracking-widest text-sm shadow-md"
+                className="px-10 py-3 bg-white border border-[#1E2D2B] text-[#1E2D2B] hover:bg-[#A38E6A] hover:text-white transition uppercase tracking-widest text-sm shadow-md text-center"
               >
                 View Hotel Collection
               </a>
 
               <a
                 href="/story"
-                className="text-[#1E2D2B]/70 hover:text-[#A38E6A] transition uppercase tracking-widest text-sm px-6 py-3"
+                className="text-[#1E2D2B]/70 hover:text-[#A38E6A] transition uppercase tracking-widest text-sm px-6 py-3 text-center"
               >
                 Our Luxury Vision
               </a>
@@ -42,14 +42,16 @@ export default function Home() {
           </div>
 
           {/* IMAGE */}
-          <div className="md:col-span-7 relative">
+          <div className="md:col-span-7 relative flex justify-center">
             <img
               src={banner}
               alt="LUMNICA Luxury Hospitality Hero"
-              className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl"
+              className="w-full max-w-md md:max-w-full object-cover rounded-sm shadow-xl"
             />
-            <div className="absolute -bottom-4 -right-4 w-14 h-14 border-b border-r border-[#A38E6A]" />
+
+            <div className="absolute -bottom-4 -right-4 w-14 h-14 border-b border-r border-[#A38E6A] hidden md:block" />
           </div>
+
         </div>
       </section>
 
