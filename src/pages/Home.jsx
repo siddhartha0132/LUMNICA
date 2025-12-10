@@ -1,7 +1,6 @@
-import banner from "../assets/imagebannerLUMNICA.png";
+import banner from "../assets/LUMNICA1.png";
 
 export default function Home() {
-
   return (
     <div className="bg-[#FAF8F5] min-h-screen font-sans">
 
@@ -12,16 +11,17 @@ export default function Home() {
           {/* TEXT */}
           <div className="md:col-span-5 space-y-8">
             <h1 className="font-serif text-5xl sm:text-7xl leading-tight text-[#1E2D2B]">
-              Skincare Rooted in Ancient Purity
+              Serving Luxury to  
+              World-Class Hospitality
             </h1>
 
             <p className="text-xl italic text-[#A38E6A]">
-              Ayurveda. Science. Results — Refined for the Modern Ritual.
+              Premium Guest Experiences — Elevated by Design.
             </p>
 
             <p className="text-[#1E2D2B]/80 text-lg leading-relaxed max-w-md">
-              Crafted with ethically sourced botanicals and clinically validated actives,
-              LUMNICA represents a new era of intentional, conscious skincare.
+              LUMNICA crafts refined luxury care essentials for hotels, resorts, and premium accommodations —
+              enhancing every guest touchpoint with elegance, quality, and unforgettable comfort.
             </p>
 
             <div className="flex gap-4 pt-4">
@@ -29,14 +29,14 @@ export default function Home() {
                 href="/products"
                 className="px-10 py-3 bg-white border border-[#1E2D2B] text-[#1E2D2B] hover:bg-[#A38E6A] hover:text-white transition uppercase tracking-widest text-sm shadow-md"
               >
-                Explore Collection
+                View Hotel Collection
               </a>
 
               <a
                 href="/story"
                 className="text-[#1E2D2B]/70 hover:text-[#A38E6A] transition uppercase tracking-widest text-sm px-6 py-3"
               >
-                Our Philosophy
+                Our Luxury Vision
               </a>
             </div>
           </div>
@@ -45,7 +45,7 @@ export default function Home() {
           <div className="md:col-span-7 relative">
             <img
               src={banner}
-              alt="LUMNICA Hero"
+              alt="LUMNICA Luxury Hospitality Hero"
               className="w-full aspect-[4/5] object-cover rounded-sm shadow-xl"
             />
             <div className="absolute -bottom-4 -right-4 w-14 h-14 border-b border-r border-[#A38E6A]" />
@@ -57,12 +57,12 @@ export default function Home() {
       <section className="py-24 bg-[#EBEBE3] border-y border-[#E0DED7]">
         <div className="max-w-5xl mx-auto px-6 text-center space-y-10">
           <h2 className="font-serif text-4xl text-[#1E2D2B]">
-            Where Tradition Meets Modern Skin Science
+            Where Hospitality Meets Timeless Luxury
           </h2>
 
           <p className="text-[#1E2D2B]/70 max-w-3xl mx-auto leading-relaxed">
-            LUMNICA blends Ayurvedic wisdom with clinically proven formulations —
-            creating skincare that is pure, effective, and deeply respectful of the planet.
+            LUMNICA partners with premium hotels and boutique accommodations to deliver thoughtfully designed,
+            high-quality guest essentials that elevate brand perception and unforgettable stay experiences.
           </p>
         </div>
       </section>
@@ -72,34 +72,34 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-14 text-center">
 
           <div>
-            <span className="text-4xl text-[#A38E6A]">&#x2741;</span>
-            <h3 className="mt-4 text-xl font-medium text-[#1E2D2B]">Pure & Ethical</h3>
+            <span className="text-4xl text-[#A38E6A]">&#x1F3E8;</span>
+            <h3 className="mt-4 text-xl font-medium text-[#1E2D2B]">Hotel-Grade Quality</h3>
             <p className="text-[#1E2D2B]/70 text-sm mt-2">
-              100% natural, clinically active ingredients.
+              Crafted for premium hospitality environments.
             </p>
           </div>
 
           <div>
-            <span className="text-4xl text-[#A38E6A]">&#x1FAD7;</span>
-            <h3 className="mt-4 text-xl font-medium text-[#1E2D2B]">Ayurvedic Precision</h3>
+            <span className="text-4xl text-[#A38E6A]">&#x1F48E;</span>
+            <h3 className="mt-4 text-xl font-medium text-[#1E2D2B]">Luxury Formulations</h3>
             <p className="text-[#1E2D2B]/70 text-sm mt-2">
-              Fast-acting, science-backed formulations.
+              Designed for memorable guest experiences.
             </p>
           </div>
 
           <div>
-            <span className="text-4xl text-[#A38E6A]">&#x2728;</span>
-            <h3 className="mt-4 text-xl font-medium text-[#1E2D2B]">Zero Toxins</h3>
+            <span className="text-4xl text-[#A38E6A]">&#x1F9EA;</span>
+            <h3 className="mt-4 text-xl font-medium text-[#1E2D2B]">Clean & Safe</h3>
             <p className="text-[#1E2D2B]/70 text-sm mt-2">
-              No parabens, sulfates, or synthetic fragrance.
+              Free from harsh chemicals and irritants.
             </p>
           </div>
 
           <div>
             <span className="text-4xl text-[#A38E6A]">&#x267B;</span>
-            <h3 className="mt-4 text-xl font-medium text-[#1E2D2B]">Eco-Luxury</h3>
+            <h3 className="mt-4 text-xl font-medium text-[#1E2D2B]">Luxury Packaging</h3>
             <p className="text-[#1E2D2B]/70 text-sm mt-2">
-              Sustainable, premium packaging.
+              Designed to match five-star interiors.
             </p>
           </div>
 
@@ -114,7 +114,8 @@ export default function Home() {
           </h2>
 
           <p className="text-[#1E2D2B]/70 max-w-2xl mx-auto">
-            Consumers today demand transparent, clean, effective skincare.
+            Hospitality brands need more than products — they need experiences.
+            LUMNICA exists to help hotels create moments guests never forget.
           </p>
         </div>
       </section>
@@ -123,11 +124,12 @@ export default function Home() {
       <section className="py-24">
         <div className="max-w-5xl mx-auto px-6 text-center space-y-10">
           <h2 className="font-serif text-4xl text-[#1E2D2B]">
-            Crafted With Purpose
+            Crafted for Memorable Stays
           </h2>
 
           <p className="text-[#1E2D2B]/70 max-w-2xl mx-auto leading-relaxed">
-            Made for conscious users who seek authenticity and visible results.
+            Every detail is crafted to strengthen guest satisfaction, brand loyalty,
+            and premium market positioning for luxury hospitality partners.
           </p>
         </div>
       </section>
