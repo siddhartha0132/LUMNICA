@@ -1,87 +1,71 @@
-// src/components/Navbar.jsx
-
-import { useState } from 'react';
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const routes = [
-    { path: "/", name: "HOME" },
-    { path: "/about", name: "OUR PHILOSOPHY" },
-    { path: "/products", name: "COLLECTION" },
-    { path: "/contact", name: "CONTACT" },
+    { path: "/", name: "Home" },
+    { path: "/about", name: "Philosophy" },
+    { path: "/products", name: "Collection" },
+    { path: "/contact", name: "Contact" },
   ];
 
-  const closeMenu = () => setIsMenuOpen(false);
-
   return (
-    <header className="
-      fixed top-0 left-0 right-0 
-      bg-[#F8F6F4]/95 backdrop-blur-sm 
-      border-b border-[#EBE8E4] 
-      shadow-sm z-50
-    ">
-      <div className="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#F8F6F3]/90 backdrop-blur-md border-b border-black/5">
+      <div className="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
 
-        {/* Brand Logo */}
-        <Link 
-          to="/" 
-          className="flex items-center gap-3 text-[#1E3A34] transition duration-300 hover:text-[#A68A6A]"
+        {/* Brand */}
+        <Link
+          to="/"
+          className="font-serif text-2xl tracking-[0.35em] text-[#1E2D2B]"
         >
-          <span className="text-2xl font-serif tracking-widest font-semibold">
-            LUMNICA
-          </span>
+          LUMNICA
         </Link>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-[#1E3A34] text-2xl z-50"
-          aria-label="Toggle navigation menu"
-        >
-          {isMenuOpen ? "✕" : "☰"}
-        </button>
-
-        {/* Navigation */}
-        <nav
-          className={`
-            hidden md:flex gap-10 text-sm tracking-widest uppercase
-            ${isMenuOpen 
-              ? "!flex flex-col absolute top-full left-0 w-full bg-[#F8F6F4] border-t border-[#EBE8E4] shadow-lg py-4"
-              : ""}
-          `}
-        >
-          {routes.map((route) => (
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex gap-12 text-[11px] tracking-[0.3em] uppercase text-[#1E2D2B]/80">
+          {routes.map((r) => (
             <NavLink
-              key={route.path}
-              to={route.path}
-              onClick={closeMenu}
-              className={({ isActive }) => `
-                transition duration-300 relative group pb-1 text-[#1E3A34] font-medium
-                ${isMenuOpen ? "px-8 py-2 w-full text-base" : ""}
-                ${isActive ? "text-[#A68A6A]" : ""}
-              `}
+              key={r.path}
+              to={r.path}
+              className={({ isActive }) =>
+                `relative pb-2 transition ${
+                  isActive ? "text-[#A38E6A]" : "hover:text-[#A38E6A]"
+                }`
+              }
             >
-              {({ isActive }) => (
-                <>
-                  {route.name}
-                  <span
-                    className={`
-                      absolute bottom-0 left-0 h-[2px] w-full transition-transform duration-300 origin-left border-b-2 border-dashed
-                      ${isActive 
-                        ? "scale-x-100 border-[#A68A6A]" 
-                        : "scale-x-0 group-hover:scale-x-100 border-transparent group-hover:border-[#A68A6A]"
-                      }
-                    `}
-                  ></span>
-                </>
-              )}
+              {r.name}
             </NavLink>
           ))}
         </nav>
 
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-xl text-[#1E2D2B]"
+        >
+          {open ? "✕" : "☰"}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden bg-[#F8F6F3] border-t border-black/5">
+          <nav className="flex flex-col px-8 py-6 space-y-6 text-[12px] tracking-[0.3em] uppercase">
+            {routes.map((r) => (
+              <Link
+                key={r.path}
+                to={r.path}
+                onClick={() => setOpen(false)}
+                className="text-[#1E2D2B]/80 hover:text-[#A38E6A]"
+              >
+                {r.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

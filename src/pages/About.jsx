@@ -1,129 +1,202 @@
-// src/pages/About.jsx
+/* ======================================================
+   LUMNICA — HOME
+   STAGE 1 (UI/UX PERFECTION, IMAGE-READY)
+====================================================== */
 
-export default function About() {
+const Eyebrow = ({ children }) => (
+  <span className="block mb-8 text-[11px] tracking-[0.45em] uppercase text-[#A38E6A]">
+    {children}
+  </span>
+);
+
+const Section = ({ eyebrow, title, children, center = false }) => (
+  <section className={`py-44 ${center ? "text-center" : ""}`}>
+    <div className="max-w-6xl mx-auto px-8">
+      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      <h2 className="font-serif text-4xl md:text-6xl leading-[1.05] mb-20">
+        {title}
+      </h2>
+      {children}
+    </div>
+  </section>
+);
+
+export default function Home() {
   return (
-    <div className="min-h-screen bg-[#F8F6F4] text-[#1E3A34] pt-32 pb-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <main className="bg-[#FAF8F5] text-[#1E2D2B] antialiased">
 
-        {/* ------------------------- HEADER ------------------------- */}
-        <div className="max-w-5xl mx-auto">
-          <h1 className="font-serif text-6xl md:text-7xl tracking-tight mb-6 text-[#1E3A34]">
-            Our Philosophy
+      {/* ======================================================
+         HERO — QUIET CONFIDENCE
+         (IMAGE WILL BE ADDED LATER)
+      ====================================================== */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-8">
+
+          <Eyebrow>Skin care with nature’s luxury</Eyebrow>
+
+          <h1 className="font-serif text-6xl md:text-[7.2rem] leading-[0.95] mb-20">
+            Care that feels <br />
+            <span className="italic text-[#A38E6A]">considered</span>, not crafted
           </h1>
 
-          <h2 className="text-2xl font-light italic text-[#A68A6A] mb-12">
-            Purity, Intention, and the Art of Timeless Skincare.
-          </h2>
-
-          <p className="text-xl leading-relaxed max-w-4xl text-[#1E3A34]/90 mb-16">
-            Lumnica was born from a singular commitment: to honor the restorative power of nature 
-            while demanding the precision of modern science. Every formulation is a deliberate 
-            blend of pure botanicals, clean actives, and ethical sourcing—crafted for those who 
-            view skincare as a ritual, not a routine.
+          <p className="max-w-xl text-lg md:text-xl text-[#1E2D2B]/70 leading-relaxed">
+            Ayurvedic skincare created through restraint,
+            balance, and respect for the skin’s natural intelligence.
           </p>
         </div>
+      </section>
 
-        <hr className="border-t border-[#1E3A34]/10 my-12" />
+      {/* ======================================================
+         PHILOSOPHY — BRAND SOUL
+         (TEXT-ONLY BY DESIGN)
+      ====================================================== */}
+      <Section
+        eyebrow="Our Philosophy"
+        title={
+          <>
+            Less reaction. <br />
+            More relationship.
+          </>
+        }
+      >
+        <div className="max-w-3xl space-y-12 text-xl leading-relaxed text-[#1E2D2B]/70">
+          <p>
+            LUMNICA was created from the belief that skincare
+            should work with the skin — not against it.
+          </p>
 
-        {/* ------------------------- VISION + MISSION ------------------------- */}
-        <div className="grid md:grid-cols-3 gap-14 mt-20">
+          <p>
+            Modern routines often overwhelm the skin with excess.
+            We choose clarity over clutter, and intention over impulse.
+          </p>
 
-          {/* Vision */}
-          <div className="md:col-span-1 p-6 border-l-2 border-[#A68A6A] bg-[#F8F6F4]">
-            <h3 className="font-serif text-3xl mb-4 text-[#A68A6A]">Our Vision</h3>
-            <p className="text-lg leading-relaxed text-[#1E3A34]/80">
-              To redefine minimal luxury skincare by merging modern efficiency with natural purity—
-              creating an experience that feels premium, performs exceptionally, and inspires 
-              conscious beauty.
+          <p>
+            What remains is care that feels steady, predictable,
+            and quietly effective over time.
+          </p>
+        </div>
+      </Section>
+
+      {/* ======================================================
+         APPROACH — STRUCTURED DEPTH
+      ====================================================== */}
+      <section className="py-44 bg-[#1E2D2B] text-white">
+        <div className="max-w-7xl mx-auto px-8 grid lg:grid-cols-12 gap-24">
+
+          <div className="lg:col-span-4">
+            <h2 className="font-serif text-5xl leading-tight sticky top-32">
+              Our approach <br />
+              to <span className="italic text-[#A38E6A]">care</span>
+            </h2>
+          </div>
+
+          <div className="lg:col-span-8 space-y-32">
+            {[
+              {
+                n: "01",
+                t: "Ayurvedic Harmony",
+                d: "Rooted in time-tested principles that prioritise balance, compatibility, and long-term wellbeing."
+              },
+              {
+                n: "02",
+                t: "Modern Precision",
+                d: "Refined through contemporary formulation standards to ensure stability, safety, and consistency."
+              },
+              {
+                n: "03",
+                t: "Conscious Restraint",
+                d: "Only what the skin truly needs — nothing ornamental, nothing excessive."
+              }
+            ].map((item) => (
+              <div key={item.n} className="border-b border-white/10 pb-24">
+                <span className="block mb-8 tracking-[0.3em] text-[#A38E6A]">
+                  {item.n}
+                </span>
+                <h3 className="font-serif text-3xl mb-10">
+                  {item.t}
+                </h3>
+                <p className="text-xl text-white/60 max-w-2xl leading-relaxed">
+                  {item.d}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ======================================================
+         FORMULATION — TRUST & CREDIBILITY
+      ====================================================== */}
+      <Section
+        eyebrow="Formulation"
+        title={
+          <>
+            Designed for skin <br />
+            that thinks long-term
+          </>
+        }
+        center
+      >
+        <div className="grid md:grid-cols-2 gap-24 text-left max-w-5xl mx-auto">
+
+          <div className="p-16 bg-[#F3F1EC]">
+            <h4 className="font-serif text-2xl mb-8">
+              Ingredient Integrity
+            </h4>
+            <p className="text-[#1E2D2B]/70 leading-relaxed text-lg">
+              Clean profiles, transparent sourcing, and compatibility
+              with sensitive and reactive skin types.
             </p>
           </div>
 
-          {/* Mission + Sourcing */}
-          <div className="md:col-span-2 grid sm:grid-cols-2 gap-10">
-
-            <div className="p-8 border border-[#EBE8E4] shadow-sm bg-white">
-              <h3 className="font-serif text-2xl text-[#1E3A34] mb-4">The Mission</h3>
-              <p className="text-base leading-relaxed text-[#1E3A34]/70">
-                To craft clean, effective, and transparent formulas supported by ethical sourcing.
-                We design products that elevate daily rituals through intentional formulation &
-                timeless aesthetics.
-              </p>
-            </div>
-
-            <div className="p-8 border border-[#EBE8E4] shadow-sm bg-white">
-              <h3 className="font-serif text-2xl text-[#1E3A34] mb-4">Sourcing & Purity</h3>
-              <p className="text-base leading-relaxed text-[#1E3A34]/70">
-                We prioritize potent botanicals harvested at peak purity. Every ingredient undergoes 
-                rigorous testing to ensure it is free from parabens, sulfates, silicones, and synthetic 
-                fillers—nothing unnecessary, nothing harmful.
-              </p>
-            </div>
-
+          <div className="p-16 bg-[#ECEBE4]">
+            <h4 className="font-serif text-2xl mb-8">
+              Daily Sustainability
+            </h4>
+            <p className="text-[#1E2D2B]/70 leading-relaxed text-lg">
+              Formulated to be used consistently, gently,
+              and without creating dependency or fatigue.
+            </p>
           </div>
         </div>
+      </Section>
 
-        <hr className="border-t border-[#1E3A34]/10 my-16" />
+      {/* ======================================================
+         CTA — CALM CONVERSION
+      ====================================================== */}
+      <section className="py-56 bg-white text-center">
+        <div className="max-w-4xl mx-auto px-8">
 
-        {/* ------------------------- BRAND ETHOS ------------------------- */}
-        <section className="mt-20 max-w-5xl mx-auto">
-          <h2 className="font-serif text-4xl text-[#1E3A34] mb-8">
-            A Philosophy Built on Conscious Luxury
+          <span className="block mx-auto w-px h-28 bg-[#A38E6A] mb-20" />
+
+          <h2 className="font-serif text-5xl md:text-7xl mb-24 leading-tight">
+            Begin a quieter <br /> relationship with your skin
           </h2>
 
-          <p className="text-lg leading-relaxed text-[#1E3A34]/80 mb-10">
-            Lumnica represents a deeper understanding of beauty—one that values balance, purity, 
-            sustainability, and emotional well-being.
-          </p>
+          <div className="flex flex-col md:flex-row justify-center gap-14">
+            <a
+              href="/products"
+              className="px-20 py-7 bg-[#1E2D2B] text-white uppercase tracking-[0.35em] text-[10px] hover:bg-[#A38E6A] transition"
+            >
+              View Collection
+            </a>
 
-          <div className="grid md:grid-cols-3 gap-12">
-
-            <div>
-              <h4 className="font-serif text-2xl text-[#A68A6A] mb-4">Purity</h4>
-              <p className="text-[#1E3A34]/70 leading-relaxed">
-                Every formulation starts with nature’s pure botanicals—intentional, potent, and 
-                uncompromised.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-serif text-2xl text-[#A68A6A] mb-4">Intention</h4>
-              <p className="text-[#1E3A34]/70 leading-relaxed">
-                Each detail is refined with purpose—minimal yet powerful, modern yet rooted.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-serif text-2xl text-[#A68A6A] mb-4">Sustainability</h4>
-              <p className="text-[#1E3A34]/70 leading-relaxed">
-                Eco-luxury defines our process—from sourcing to packaging, every choice honors 
-                the planet.
-              </p>
-            </div>
-
+            <a
+              href="/about"
+              className="text-[10px] uppercase tracking-[0.35em] hover:text-[#A38E6A]"
+            >
+              Read Our Philosophy
+            </a>
           </div>
-        </section>
-
-        {/* ------------------------- FOUNDER QUOTE (UNCHANGED) ------------------------- */}
-        <section className="mt-24 max-w-4xl mx-auto bg-[#EAE8E5] p-10 md:p-16 border-l-8 border-[#A68A6A]">
-          <p className="text-3xl font-serif italic text-[#1E3A34] leading-snug">
-            “Skincare is not just a routine, it is a ritual of self-reverence. Lumnica is our promise 
-            to make that ritual beautiful, effective, and deeply honest.”
-          </p>
-          <p className="mt-6 text-lg font-medium text-[#A68A6A]">
-            — Akshat, Founder of Lumnica
-          </p>
-        </section>
-
-        {/* ------------------------- NEW STATEMENT BELOW AKSHAT QUOTE ------------------------- */}
-        <div className="max-w-4xl mx-auto mt-10">
-          <p className="text-xl text-[#1E3A34]/80 font-light leading-relaxed italic text-center">
-            Together with co-founders Rishi and Siddhartha, Lumnica continues to evolve—guided 
-            by integrity, innovation, and the belief that true luxury begins with purpose.
-          </p>
         </div>
+      </section>
 
-      </div>
-    </div>
+      {/* ======================================================
+         FOOTER
+      ====================================================== */}
+      <footer className="py-16 border-t border-black/10 text-center text-[9px] uppercase tracking-[0.45em] opacity-40">
+        © 2025 LUMNICA — Skin care with nature’s luxury
+      </footer>
+    </main>
   );
 }
-

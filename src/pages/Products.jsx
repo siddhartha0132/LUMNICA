@@ -15,7 +15,7 @@ const products = [
   },
   {
     name: "Botanical Face Cleanser",
-    img: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?q=80&w=2000&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1593890784046-26b96c308e79?q=80&w=2000&auto=format&fit=crop",
     slug: "face-cleanser"
   },
   {
