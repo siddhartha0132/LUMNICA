@@ -1,101 +1,83 @@
-// src/pages/Products.jsx
+import React from "react";
+import { motion } from "framer-motion";
+import { Heart, Star, CheckCircle2 } from "lucide-react";
 
-import { Link } from "react-router-dom";
-
-const products = [
-  {
-    name: "Hydrating Aloe Essence",
-    img: "https://images.unsplash.com/photo-1593890784046-26b96c308e79?q=80&w=2000&auto=format&fit=crop",
-    slug: "aloe-essence"
-  },
-  {
-    name: "Vitamin C Radiance Serum",
-    img: "https://images.unsplash.com/photo-1600180758890-d8286b9fcf5f?q=80&w=2000&auto=format&fit=crop",
-    slug: "radiance-serum"
-  },
-  {
-    name: "Botanical Face Cleanser",
-    img: "https://images.unsplash.com/photo-1593890784046-26b96c308e79?q=80&w=2000&auto=format&fit=crop",
-    slug: "face-cleanser"
-  },
-  {
-    name: "Overnight Renewal Cream",
-    img: "https://images.unsplash.com/photo-1620916654780-e71a073587b4?q=80&w=2000&auto=format&fit=crop",
-    slug: "renewal-cream"
-  },
-  {
-    name: "Rosehip Toning Mist",
-    img: "https://images.unsplash.com/photo-1590480922894-6720f4c1737f?q=80&w=2000&auto=format&fit=crop",
-    slug: "toning-mist"
-  },
-];
+// Importing the 5 images as requested
+import img1 from "../assets/PRODUCT1.png"; 
+import img2 from "../assets/PRODUCT2.png"; 
+import img3 from "../assets/PRODUCT3.png"; 
+import img4 from "../assets/PRODUCT4.png"; 
+import img5 from "../assets/PRODUCT5.png"; 
 
 export default function Products() {
+  const products = [
+    { id: 1, name: "AMRITA KESH SHAMPOO", rating: 5.0, reviews: 124, isNew: true, image: img1 },
+    { id: 2, name: "AMRITA SNAN BODY WASH", rating: 4.8, reviews: 42, isNew: false, image: img2 },
+    { id: 3, name: "AMRITA MRIDU CONDITIONER", rating: 4.7, reviews: 12, isNew: true, image: img3 },
+    { id: 4, name: "AMRITA MUKHA FACE WASH", rating: 4.9, reviews: 89, isNew: false, image: img4 },
+    { id: 5, name: "AMRITA SAAR MOISURIZER", rating: 4.6, reviews: 24, isNew: true, image: img5 }, // Using img1 as a placeholder for the 6th
+  ];
 
   return (
-    <div className="min-h-screen bg-[#F8F6F4] text-[#1E3A34] pt-32 pb-20 px-6">
-      <div className="max-w-7xl mx-auto">
-
-        {/* Header Section */}
-        <div className="max-w-5xl mx-auto mb-16 text-center">
-            <h1 className="font-serif text-6xl md:text-7xl mb-4 text-[#1E3A34] tracking-tighter">
-              The LUMNICA Collection
-            </h1>
-            <p className="text-xl font-light italic text-[#A68A6A] mb-8">
-              Curated Essentials for Timeless Radiance — Launching Soon.
-            </p>
-        </div>
-
-        {/* Products Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-16">
-
-          {products.map((p, i) => (
-            <div 
-                key={i}
-                className="group block transition duration-300 transform hover:-translate-y-1 shadow-md hover:shadow-xl bg-[#F8F6F4]"
+    <main className="bg-white min-h-screen pt-36 pb-20">
+      
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        {/* ===== 6 PRODUCT GRID (KIMIRICA FORMAT) ===== */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-10 md:gap-x-10 md:gap-y-16">
+          {products.map((product) => (
+            <motion.div 
+              key={product.id} 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="group flex flex-col"
             >
-              {/* Image */}
-              <div className="overflow-hidden relative">
+              {/* IMAGE CONTAINER */}
+              <div className="relative aspect-[1/1.1] bg-[#F9F9F9] overflow-hidden mb-5 flex items-center justify-center">
+                {/* New Launch Badge */}
+                {product.isNew && (
+                  <div className="absolute top-0 left-0 bg-black text-white text-[9px] font-bold px-3 py-1.5 z-10 uppercase tracking-widest shadow-sm">
+                    New Launch
+                  </div>
+                )}
+                
+                {/* Wishlist Heart */}
+                <button className="absolute top-3 right-3 z-10 p-2 bg-white/50 hover:bg-white rounded-full transition-all duration-300 shadow-sm border border-gray-100">
+                  <Heart size={16} className="text-gray-500 hover:text-red-500 transition-colors" />
+                </button>
+
                 <img
-                  src={p.img}
-                  alt={p.name}
-                  className="w-full aspect-[4/5] object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                  src={product.image}
+                  alt={product.name}
+                  className="w-[85%] h-[85%] object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
                 />
-
-                {/* Launching Soon Label */}
-                <span className="absolute top-4 left-4 text-xs uppercase tracking-widest px-3 py-1 text-[#A68A6A] border border-[#A68A6A] bg-white/80 backdrop-blur-sm">
-                  Launching Soon
-                </span>
               </div>
 
-              {/* Product Info */}
-              <div className="p-6 text-center">
-                <h2 className="font-serif text-2xl text-[#1E3A34] mt-2 group-hover:text-[#A68A6A] transition">
-                    {p.name}
-                </h2>
+              {/* PRODUCT INFO */}
+              <div className="flex flex-col items-start px-1">
+                <h3 className="text-[12px] md:text-[13px] font-semibold tracking-[0.1em] text-gray-800 uppercase mb-3 leading-snug min-h-[35px]">
+                  {product.name}
+                </h3>
 
-                {/* No Price */}
-                {/* No Quick View */}
+                {/* RATINGS & REVIEWS (KIMIRICA BLUE CHECK STYLE) */}
+                <div className="flex items-center gap-2 text-[11px]">
+                  <div className="flex items-center gap-1 text-gray-600">
+                    <Star size={12} className="text-yellow-500 fill-yellow-500" />
+                    <span className="font-bold">{product.rating}</span>
+                  </div>
+                  
+                  <div className="w-[1px] h-3 bg-gray-300 mx-1" />
+                  
+                  <div className="flex items-center gap-1.5 text-[#00AEEF] font-medium hover:underline cursor-pointer">
+                    <CheckCircle2 size={13} className="fill-[#00AEEF] text-white" />
+                    <span>{product.reviews} Reviews</span>
+                  </div>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-
-          {/* Future Product Slot */}
-          <div className="hidden lg:block col-span-1 p-4">
-            <div className="h-full border border-dashed border-[#EBE8E4] flex flex-col justify-center items-center p-8 text-center">
-                <p className="text-xl font-serif text-[#A68A6A] mb-3">More Coming Soon</p>
-                <p className="text-sm text-[#1E3A34]/70">New formulations are currently in development.</p>
-                <Link 
-                  to="/contact" 
-                  className="mt-4 text-sm underline text-[#1E3A34] hover:text-[#A68A6A]"
-                >
-                  Get Notified
-                </Link>
-            </div>
-          </div>
-
         </div>
       </div>
-    </div>
+    </main>
   );
 }

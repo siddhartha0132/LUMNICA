@@ -1,182 +1,172 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ProductImage from "../assets/product.png";
-import HeroImage from "../assets/HeroPagePhoto.png";
+// Icons for trust badges (You can replace these with your own SVG files)
+import { Leaf, Rabbit, MapPin, Globe, ShieldCheck, Droplets } from "lucide-react";
 
-const PitchSection = ({ eyebrow, title, children, bg = "bg-transparent", dark = false }) => (
-  <section className={`py-32 md:py-56 ${bg} ${dark ? "text-white" : "text-[#1E2D2B]"}`}>
-    <div className="max-w-7xl mx-auto px-6 md:px-12">
-      {eyebrow && (
-        <span className="block mb-6 text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-[#A38E6A] font-bold">
-          {eyebrow}
-        </span>
-      )}
-      <h2 className="font-serif text-5xl md:text-[5rem] leading-[1.1] mb-16 tracking-tighter">
-        {title}
-      </h2>
-      {children}
-    </div>
-  </section>
-);
+import HeroImage from "../assets/HeroBhai.png";
+import product1 from "../assets/Hero2_1.png";
+import product2 from "../assets/product1_1.png";
+import product3 from "../assets/product3.jpeg";
+import userProfile from "../assets/product3.jpeg"; // Add the user image here
 
 export default function Home() {
   return (
-    <main className="bg-[#FAF8F5] text-[#1E2D2B] antialiased selection:bg-[#A38E6A] selection:text-white">
+    <div className="bg-[#FAF9F6] text-[#1A1A1A] font-light overflow-x-hidden">
 
-      {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* ===== HERO ===== */}
+      <section className="relative w-full h-[100svh] overflow-hidden">
+        <img
+          src={HeroImage}
+          alt="Lumnica"
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+        />
+        <div className="absolute inset-0 bg-black/40" />
 
-        <div className="absolute inset-0 bg-[#EBEBE3] z-0">
-          <div className="absolute inset-0 bg-black/5" />
-        </div>
+        <div className="relative z-10 h-full flex flex-col justify-center items-center text-white text-center px-6">
+          <p className="uppercase text-[10px] tracking-[0.45em] mb-10 text-white/70">
+            Est. 2024 — Botanical Alchemy
+          </p>
 
-        <div className="relative z-10 w-full max-w-4xl mx-auto px-6 flex flex-col items-center text-center gap-10 pt-24">
-
-          <img
-            src={ProductImage}
-            alt="Lumnica Product"
-            className="w-[180px] md:w-[300px] drop-shadow-2xl animate-[float_7s_ease-in-out_infinite]"
-          />
-
-          <style>
-            {`
-              @keyframes float {
-                0%, 100% { transform: translateY(0px); }
-                50% { transform: translateY(-10px); }
-              }
-            `}
-          </style>
-
-          <span className="block text-[10px] tracking-[0.6em] uppercase text-[#A38E6A] font-bold">
-            LUMNICA — High-Performance Ayurveda
-          </span>
-
-          <h1 className="font-serif text-[12vw] md:text-[9rem] leading-[0.85] tracking-tighter">
-            Pure <br />
-            <span className="italic text-[#A38E6A]">Intent.</span>
+          <h1 className="font-serif text-[52px] md:text-[120px] leading-[0.95] mb-12">
+            Sacred <br />
+            <span className="italic font-light">Skincare</span>
           </h1>
 
-          <p className="max-w-xl mx-auto text-lg md:text-xl text-[#1E2D2B]/70 font-light leading-relaxed">
-            Designed for world-class hospitality, crafted with Ayurvedic discipline, and refined by modern skin science.
-          </p>
-
-          {/* ONLY ONE BUTTON NOW */}
-          <div className="flex flex-col items-center justify-center gap-6">
-            <Link to="/contact">
-              <button className="text-[10px] uppercase tracking-[0.4em] font-bold border-b border-[#1E2D2B]/20 pb-2 hover:border-[#A38E6A] transition-all">
-                Partner with Us
-              </button>
-            </Link>
-          </div>
-
-          <div className="mt-10 text-[9px] uppercase tracking-[0.4em] opacity-40">
-            Scroll to explore
-          </div>
-        </div>
-      </section>
-
-      {/* THE SHIFT SECTION */}
-      <PitchSection
-        eyebrow="The Shift"
-        title={<>Luxury is <span className="italic">quiet</span> integrity.</>}
-      >
-        <div className="grid lg:grid-cols-2 gap-20 items-end">
-          <div className="space-y-8 text-xl md:text-2xl leading-relaxed text-[#1E2D2B]/60 font-light">
-            <p>
-              Modern guests no longer seek excess. They seek <span className="text-[#1E2D2B] font-normal">integrity</span>.
-            </p>
-            <p className="text-[#A38E6A] italic">
-              LUMNICA bridges the gap between ancient ritual and 5-star performance.
-            </p>
-          </div>
-
-          <div className="aspect-[4/5] bg-[#EBEBE3] relative overflow-hidden">
-            <img
-              src={HeroImage}
-              alt="Lumnica Visual"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-        </div>
-      </PitchSection>
-
-      {/* PILLARS SECTION */}
-      <section className="py-32 md:py-56 bg-[#1E2D2B] text-white overflow-hidden relative">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-5">
-            <h2 className="font-serif text-5xl md:text-7xl leading-[0.9] sticky top-32">
-              The <br /> Three <br /> <span className="italic text-[#A38E6A]">Pillars</span>
-            </h2>
-          </div>
-
-          <div className="lg:col-span-7 space-y-1">
-            {[
-              { id: "01", t: "Authentic Heritage", d: "Pure Ayurvedic ingredients sourced from ethical growers in India." },
-              { id: "02", t: "Scientific Precision", d: "Refined formulations ensuring safety and stability for global skin types." },
-              { id: "03", t: "Restrained Design", d: "Packaging and sensory experiences that complement high-end interiors." }
-            ].map((p) => (
-              <div key={p.id} className="group py-16 border-b border-white/10 hover:bg-white/[0.02] transition-colors px-4">
-                <span className="text-[#A38E6A] font-bold tracking-widest text-xs block mb-6">{p.id}</span>
-                <h3 className="font-serif text-3xl md:text-5xl mb-6 group-hover:italic transition-all">{p.t}</h3>
-                <p className="text-xl text-white/50 max-w-xl leading-relaxed font-light">{p.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="absolute bottom-10 right-10 opacity-5 text-[10vw] font-serif pointer-events-none">
-          LUMNICA
-        </div>
-      </section>
-
-      {/* HOSPITALITY SECTION */}
-      <section className="py-32 md:py-56 bg-[#F3F1EC]">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-
-          <span className="text-[#A38E6A] uppercase tracking-[0.5em] text-[10px] font-bold mb-8 block">
-            Global Partnerships
-          </span>
-
-          <h2 className="font-serif text-4xl md:text-6xl mb-12">
-            Elevate the Guest Ritual
-          </h2>
-
-          <p className="text-xl text-[#1E2D2B]/60 leading-relaxed mb-20 max-w-3xl mx-auto">
-            We partner with boutique hotels and luxury resorts to provide custom amenity solutions that guests remember long after checkout.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {["Custom Scenting", "Eco-Conscious Bulk", "Retail Integration"].map(item => (
-              <div key={item} className="p-10 border border-[#1E2D2B]/5 bg-white shadow-sm hover:shadow-xl transition-shadow">
-                <h5 className="font-serif text-lg italic">{item}</h5>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <section className="py-48 text-center bg-white">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="font-serif text-6xl md:text-[8rem] tracking-tighter leading-[0.85] mb-12">
-            Luxury <br /> in <span className="italic text-[#A38E6A]">Silence.</span>
-          </h2>
-
-          <p className="text-[#1E2D2B]/50 uppercase tracking-[0.4em] text-[11px] font-bold mb-16">
-            The Future of Ayurvedic Care
-          </p>
-
-          <Link to="/contact">
-            <button className="px-20 py-6 bg-[#1E2D2B] text-white uppercase tracking-widest text-[11px] font-bold hover:bg-[#A38E6A] transition-all duration-500">
-              Request a Pitch Deck
+          <Link to="/products">
+            <button className="border border-white/40 px-14 py-5 text-[11px] tracking-[0.4em] uppercase hover:bg-white hover:text-black transition">
+              Explore Rituals
             </button>
           </Link>
         </div>
       </section>
 
-      <footer className="py-12 border-t border-black/5 text-center text-[9px] uppercase tracking-[0.5em] opacity-40">
-        LUMNICA CONSCIOUS CARE — EST. 2025
-      </footer>
-    </main>
+      {/* ===== BRAND STORY ===== */}
+      <section className="bg-white py-32 px-6 text-center">
+        <p className="text-[11px] tracking-[0.45em] uppercase text-[#C9A24D] mb-8">
+          The Lumnica Philosophy
+        </p>
+        <h2 className="font-serif text-4xl md:text-6xl italic mb-10">
+          Where Ayurveda meets modern luxury
+        </h2>
+        <p className="max-w-3xl mx-auto text-black/60 text-[16px] leading-relaxed">
+          Every Lumnica formula is crafted in small batches using ancient Ayurvedic
+          wisdom blended with modern cosmetic science.
+        </p>
+      </section>
+
+      {/* ===== IMAGE + STORY ===== */}
+      <section className="bg-[#FAF9F6] py-32 px-6">
+        <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-20 items-center">
+          <div>
+            <p className="text-[11px] tracking-[0.45em] uppercase text-[#C9A24D] mb-6">
+              The Source
+            </p>
+            <h2 className="font-serif text-4xl md:text-6xl italic mb-8">
+              Raw. Potent. Pure.
+            </h2>
+            <p className="text-black/60 text-[16px] leading-relaxed mb-10">
+              Our herbs are wild-harvested from sacred Indian soil and cold-pressed
+              to preserve their vibrational potency.
+            </p>
+          </div>
+
+          <div className="relative h-[70vh] rounded-xl overflow-hidden shadow-2xl">
+            <img src={product1} alt="" className="w-full h-full object-cover" />
+          </div>
+        </div>
+      </section>
+
+      {/* ===== COLLECTION ===== */}
+      <section className="py-32 px-6 max-w-[1400px] mx-auto text-center">
+        <h2 className="font-serif text-4xl md:text-6xl italic mb-6">
+          Seasonal Rituals
+        </h2>
+        <p className="text-[11px] tracking-[0.4em] uppercase text-black/40 mb-20">
+          Curated botanical elixirs
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-20">
+          {[ 
+            { img: product1, name: "Amrita Mridu", cat: "Hair Elixir", price: "₹475" },
+            { img: product2, name: "Amrita Snan", cat: "Body Ritual", price: "₹525" },
+            { img: product3, name: "Vata Shanti", cat: "Face Cleanser", price: "₹495" }
+          ].map((p, i) => (
+            <div key={i}>
+              <div className="aspect-[3/4] bg-[#EEE] mb-8 overflow-hidden">
+                <img src={p.img} alt={p.name} className="w-full h-full object-cover hover:scale-105 transition duration-700" />
+              </div>
+              <h3 className="font-serif text-2xl mb-2">{p.name}</h3>
+              <p className="text-[11px] tracking-[0.3em] uppercase text-black/40 mb-2">
+                {p.cat}
+              </p>
+              <p className="italic text-[18px]">{p.price}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== TRUST BADGES (KIMIRICA STYLE) ===== */}
+      <section className="bg-white py-32 px-6 border-t border-b border-gray-100">
+        <div className="max-w-[1200px] mx-auto text-center">
+          <h2 className="font-serif text-3xl md:text-4xl tracking-widest uppercase mb-4">Thoughtful Commitments</h2>
+          <p className="text-gray-500 mb-20 max-w-2xl mx-auto text-sm">A yes to conscious choices. Our commitment extends to People, Planet, & Pets, driving every decision we make.</p>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-16 gap-x-8">
+            {[
+              { icon: <Droplets strokeWidth={1} />, title: "CLEAN FORMULATIONS", sub: "SLS & Paraben Free" },
+              { icon: <Rabbit strokeWidth={1} />, title: "ALWAYS VEGAN", sub: "Vegan & Cruelty Free" },
+              { icon: <MapPin strokeWidth={1} />, title: "MADE IN INDIA", sub: "Made Locally, Served Globally" },
+              { icon: <Leaf strokeWidth={1} />, title: "SUSTAINABLE SOURCING", sub: "Fairtrade, Natural Origin" },
+              { icon: <ShieldCheck strokeWidth={1} />, title: "IFRA CERTIFIED", sub: "Natural Extracts, Safe Fragrances" },
+              { icon: <Globe strokeWidth={1} />, title: "DERMATOLOGICALLY TESTED", sub: "Suitable For Every Skin Type" },
+            ].map((badge, idx) => (
+              <div key={idx} className="flex flex-col items-center group">
+                <div className="mb-6 text-gray-700 group-hover:scale-110 transition-transform duration-500">
+                  {React.cloneElement(badge.icon, { size: 40 })}
+                </div>
+                <h4 className="text-[12px] font-bold tracking-[0.2em] uppercase mb-2">{badge.title}</h4>
+                <p className="text-[12px] text-gray-400 font-light">{badge.sub}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== TESTIMONIAL (KIMIRICA STYLE) ===== */}
+      <section className="bg-[#FAF9F6] py-32 px-6 text-center">
+        <h2 className="text-[12px] tracking-[0.5em] uppercase text-gray-400 mb-16">
+          Testimonials
+        </h2>
+
+        <div className="max-w-3xl mx-auto">
+          <div className="flex justify-center gap-1 text-[#D4AF37] text-sm mb-10">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+
+          <div className="px-4">
+            <p className="font-serif text-[20px] md:text-[28px] leading-relaxed text-gray-700 mb-6 italic">
+              "Obsessed with the Ultimate Hydration Set! The hydration boost duo is like a saviour for my skin. The hyaluronic acid in the serum is pure magic, and the gel seals in all that goodness."
+            </p>
+            <p className="text-gray-500 text-sm md:text-base leading-loose mb-12 max-w-xl mx-auto">
+              My skin's never been this happy and hydrated!
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-white shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" 
+                alt="Simran Sethi Bedi" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="text-[11px] tracking-[0.4em] font-semibold uppercase text-gray-800">
+              Simran Sethi Bedi
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
   );
 }
