@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Leaf, Rabbit, MapPin, Globe, ShieldCheck, Droplets } from "lucide-react";
 
-import HeroImage from "../assets/HeroBhai.png";
+import HeroImage from "../assets/herofinal.png";
 import Main from "../assets/Main_1.png";
 import product1 from "../assets/PRODUCT1.png";
 import product2 from "../assets/PRODUCT2.png";
@@ -41,7 +41,7 @@ export default function Home() {
           The Lumnica Philosophy
         </p>
         <h2 className="font-serif text-3xl md:text-5xl italic mb-8">
-          Where Ayurveda meets modern luxury
+          Where Ayurveda meets modern Luxary
         </h2>
         <p className="max-w-3xl mx-auto text-black/60 text-[15px] leading-[1.9]">
           Every Lumnica formula is crafted in small batches using ancient Ayurvedic
@@ -101,120 +101,124 @@ export default function Home() {
       </section>
 
       {/* ===== TRUST BADGES ===== */}
-      <section className="bg-white py-28 px-6 border-t border-b border-gray-100">
+      <section className="py-28 px-6 bg-gradient-to-b from-[#F3EBDD] via-[#FAF9F6] to-[#F3EBDD] border-t border-b border-[#E7DCC6]">
         <div className="max-w-[1200px] mx-auto text-center">
-          <h2 className="font-serif text-2xl md:text-3xl tracking-widest uppercase mb-3">
+
+          <h2 className="font-serif text-2xl md:text-3xl tracking-widest uppercase mb-3 text-[#1F3D36]">
             Thoughtful Commitments
           </h2>
-          <p className="text-gray-500 mb-16 max-w-2xl mx-auto text-sm">
-            A yes to conscious choices. Our commitment extends to People, Planet, & Pets.
+
+          <p className="text-[#1F3D36]/60 mb-16 max-w-2xl mx-auto text-sm">
+            Rooted in purity. Guided by nature. Created with intention.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-14">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-20">
             {[
               { icon: <Droplets />, title: "CLEAN FORMULATIONS", sub: "SLS & Paraben Free" },
               { icon: <Rabbit />, title: "ALWAYS VEGAN", sub: "Vegan & Cruelty Free" },
-              { icon: <MapPin />, title: "MADE IN INDIA", sub: "Made Locally" },
-              { icon: <Leaf />, title: "SUSTAINABLE", sub: "Natural Origin" },
+              { icon: <MapPin />, title: "MADE IN INDIA", sub: "Ayurvedic Origins" },
+              { icon: <Leaf />, title: "SUSTAINABLE", sub: "Earth Conscious" },
               { icon: <ShieldCheck />, title: "IFRA CERTIFIED", sub: "Safe Fragrances" },
-              { icon: <Globe />, title: "DERMATOLOGICALLY TESTED", sub: "All Skin Types" },
+              { icon: <Globe />, title: "DERM TESTED", sub: "All Skin Types" },
             ].map((badge, idx) => (
-              <div key={idx} className="flex flex-col items-center">
-                <div className="mb-5 text-gray-700">
-                  {React.cloneElement(badge.icon, { size: 32, strokeWidth: 1 })}
+              <div key={idx} className="flex flex-col items-center group">
+                <div className="mb-6 text-[#C9A24D] group-hover:text-[#C65A2E] transition">
+                  {React.cloneElement(badge.icon, { size: 34, strokeWidth: 1.2 })}
                 </div>
-                <h4 className="text-[11px] font-bold tracking-[0.2em] uppercase mb-1">{badge.title}</h4>
-                <p className="text-[11px] text-gray-400">{badge.sub}</p>
+                <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase mb-2 text-[#1F3D36]">
+                  {badge.title}
+                </h4>
+                <p className="text-[11px] text-[#1F3D36]/60">
+                  {badge.sub}
+                </p>
+                <div className="mt-4 w-12 h-[2px] bg-[#C9A24D] opacity-40 group-hover:opacity-100 transition" />
               </div>
             ))}
           </div>
+
         </div>
       </section>
+
       {/* ===== INGREDIENT STORY ===== */}
-<section className="bg-[#FAF9F6] py-32 px-6">
-  <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-    <div>
-      <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-6">
-        Our Ingredients
-      </p>
-      <h2 className="font-serif text-3xl md:text-5xl italic mb-8">
-        Harvested. Not manufactured.
-      </h2>
-      <p className="text-black/60 text-[15px] leading-[1.9]">
-        Every LUMNICA formulation begins in the soil — not in a lab.
-        We partner with organic farmers who grow herbs slowly,
-        respecting both land and lunar cycles. Each ingredient
-        is chosen for its energetic compatibility with the skin.
-      </p>
-    </div>
+      <section className="bg-[#FAF9F6] py-32 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-center">
+          <div>
+            <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-6">
+              Our Ingredients
+            </p>
+            <h2 className="font-serif text-3xl md:text-5xl italic mb-8">
+              Harvested. Not manufactured.
+            </h2>
+            <p className="text-black/60 text-[15px] leading-[1.9]">
+              Every LUMNICA formulation begins in the soil — not in a lab.
+              We partner with organic farmers who grow herbs slowly,
+              respecting both land and lunar cycles. Each ingredient
+              is chosen for its energetic compatibility with the skin.
+            </p>
+          </div>
 
-    <div className="h-[60vh] rounded-xl overflow-hidden shadow-xl">
-      <img
-        src={product2}
-        className="w-full h-full object-cover"
-        alt="Lumnica Ingredients"
-      />
-    </div>
-  </div>
-</section>
+          <div className="h-[60vh] rounded-xl overflow-hidden shadow-xl">
+            <img src={product2} className="w-full h-full object-cover" alt="Lumnica Ingredients" />
+          </div>
+        </div>
+      </section>
 
-{/* ===== THE LUMNICA RITUAL ===== */}
-<section className="bg-white py-32 px-6">
-  <div className="max-w-6xl mx-auto text-center">
-    <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-6">
-      The Lumnica Ritual
-    </p>
+      {/* ===== THE LUMNICA RITUAL ===== */}
+      <section className="bg-white py-32 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-6">
+            The Lumnica Ritual
+          </p>
 
-    <h2 className="font-serif text-3xl md:text-5xl italic mb-16">
-      Designed to be felt, not rushed
-    </h2>
+          <h2 className="font-serif text-3xl md:text-5xl italic mb-16">
+            Designed to be felt, not rushed
+          </h2>
 
-    <div className="grid md:grid-cols-3 gap-20 text-left">
-      <div>
-        <span className="text-[#C9A24D] tracking-[0.4em] text-[12px] block mb-4">01</span>
-        <h3 className="font-serif text-xl mb-4">Cleanse</h3>
-        <p className="text-black/60 leading-[1.9] text-[15px]">
-          Begin by gently removing impurities while preserving the skin’s natural balance.
-        </p>
-      </div>
+          <div className="grid md:grid-cols-3 gap-20 text-left">
+            <div>
+              <span className="text-[#C9A24D] tracking-[0.4em] text-[12px] block mb-4">01</span>
+              <h3 className="font-serif text-xl mb-4">Cleanse</h3>
+              <p className="text-black/60 leading-[1.9] text-[15px]">
+                Begin by gently removing impurities while preserving the skin’s natural balance.
+              </p>
+            </div>
 
-      <div>
-        <span className="text-[#C9A24D] tracking-[0.4em] text-[12px] block mb-4">02</span>
-        <h3 className="font-serif text-xl mb-4">Nourish</h3>
-        <p className="text-black/60 leading-[1.9] text-[15px]">
-          Feed the skin with botanical actives that restore hydration and cellular harmony.
-        </p>
-      </div>
+            <div>
+              <span className="text-[#C9A24D] tracking-[0.4em] text-[12px] block mb-4">02</span>
+              <h3 className="font-serif text-xl mb-4">Nourish</h3>
+              <p className="text-black/60 leading-[1.9] text-[15px]">
+                Feed the skin with botanical actives that restore hydration and cellular harmony.
+              </p>
+            </div>
 
-      <div>
-        <span className="text-[#C9A24D] tracking-[0.4em] text-[12px] block mb-4">03</span>
-        <h3 className="font-serif text-xl mb-4">Protect</h3>
-        <p className="text-black/60 leading-[1.9] text-[15px]">
-          Seal the ritual with ingredients that strengthen the skin barrier and glow.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+            <div>
+              <span className="text-[#C9A24D] tracking-[0.4em] text-[12px] block mb-4">03</span>
+              <h3 className="font-serif text-xl mb-4">Protect</h3>
+              <p className="text-black/60 leading-[1.9] text-[15px]">
+                Seal the ritual with ingredients that strengthen the skin barrier and glow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-{/* ===== LUXURY TESTIMONIAL ===== */}
-<section className="bg-[#FAF9F6] py-32 px-6 text-center">
-  <div className="max-w-3xl mx-auto">
-    <p className="text-[10px] tracking-[0.5em] uppercase text-black/40 mb-12">
-      LUMNICA Stories
-    </p>
+      {/* ===== Luxary TESTIMONIAL ===== */}
+      <section className="bg-[#FAF9F6] py-32 px-6 text-center">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-[10px] tracking-[0.5em] uppercase text-black/40 mb-12">
+            LUMNICA Stories
+          </p>
 
-    <p className="font-serif italic text-[20px] md:text-[28px] leading-relaxed text-black/70 mb-10">
-      “Lumnica feels less like skincare and more like a daily meditation.
-      My skin has never felt calmer, softer, or more alive.”
-    </p>
+          <p className="font-serif italic text-[20px] md:text-[28px] leading-relaxed text-black/70 mb-10">
+            “Lumnica feels less like skincare and more like a daily meditation.
+            My skin has never felt calmer, softer, or more alive.”
+          </p>
 
-    <p className="text-[11px] tracking-[0.4em] uppercase text-black/60">
-      Simran Sethi — Jaipur
-    </p>
-  </div>
-</section>
-
+          <p className="text-[11px] tracking-[0.4em] uppercase text-black/60">
+            Simran Sethi — Jaipur
+          </p>
+        </div>
+      </section>
 
     </div>
   );
