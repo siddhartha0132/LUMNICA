@@ -2,105 +2,140 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const API = "http://localhost:5000/api";
+const API = "https://lumnica-backend.onrender.com/api";
 
 export default function Cart() {
   const [cart, setCart] = useState(null);
   const [message, setMessage] = useState("");
 
   const token = localStorage.getItem("token");
-
-  // 👇 useNavigate MUST BE INSIDE COMPONENT
   const navigate = useNavigate();
 
-  const fetchCart = async () => {
-    try {
-      const res = await axios.get(`${API}/cart`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+  useEffect(() => {
+    let isMounted = true;
 
-      setCart(res.data.cart || { items: [], total: 0 });
-    } catch (err) {
-      setMessage("Login required to view cart");
-    }
-  };
+    const fetchCart = async () => {
+      try {
+        const res = await axios.get(`${API}/cart`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        if (isMounted) {
+          setCart(res.data.cart || { items: [], total: 0 });
+        }
+      } catch (err) {
+        if (isMounted) {
+          setMessage("Please login to view your cart");
+        }
+      }
+    };
+
+    if (token) fetchCart();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [token]);
 
   const removeItem = async (productId) => {
     await axios.post(
       `${API}/cart/remove`,
       { productId },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
+      { headers: { Authorization: `Bearer ${token}` } }
     );
 
-    fetchCart();
+    // re-fetch safely
+    try {
+      const res = await axios.get(`${API}/cart`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setCart(res.data.cart || { items: [], total: 0 });
+    } catch {}
   };
 
-  useEffect(() => {
-    fetchCart();
-  }, []);
+  /* ---------- AUTH STATES ---------- */
 
   if (!token) {
     return (
-      <h2 className="text-center mt-20">
+      <div className="pt-32 text-center text-sm tracking-wide text-gray-600">
         Please login to view your cart.
-      </h2>
+      </div>
     );
   }
 
   if (!cart) {
     return (
-      <h2 className="text-center mt-20">
-        Loading cart…
-      </h2>
+      <div className="pt-32 text-center text-sm tracking-wide text-gray-500">
+        Loading your cart…
+      </div>
     );
   }
 
-  return (
-    <div className="max-w-4xl mx-auto pt-28 px-4 pb-20">
-      <h1 className="text-3xl tracking-widest mb-6">YOUR CART</h1>
+  /* ---------- MAIN UI ---------- */
 
-      {message && <p>{message}</p>}
+  return (
+    <div className="max-w-5xl mx-auto pt-28 px-6 pb-24">
+      <h1 className="text-3xl tracking-[0.25em] mb-10 text-center">
+        YOUR CART
+      </h1>
+
+      {message && (
+        <p className="text-center text-sm text-red-500 mb-6">{message}</p>
+      )}
 
       {cart.items.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p className="text-center text-gray-500 tracking-wide">
+          Your cart is currently empty.
+        </p>
       ) : (
         <>
-          <div className="space-y-6">
+          <div className="divide-y">
             {cart.items.map((item) => (
               <div
                 key={item.product._id}
-                className="flex justify-between border-b pb-3"
+                className="flex justify-between py-6"
               >
-                <div>
-                  <p className="font-medium">{item.product.name}</p>
-                  <p>₹{item.product.price}</p>
-                  <p>Qty: {item.quantity}</p>
+                <div className="space-y-1">
+                  <p className="tracking-wide text-sm font-medium">
+                    {item.product.name}
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    ₹{item.product.price}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Quantity: {item.quantity}
+                  </p>
                 </div>
 
                 <button
                   onClick={() => removeItem(item.product._id)}
-                  className="text-sm text-red-600"
+                  className="text-xs tracking-wider text-gray-500 hover:text-red-600 transition"
                 >
-                  Remove
+                  REMOVE
                 </button>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 text-xl">
-            <p>
-              Total: <b>₹{cart.total}</b>
-            </p>
+          {/* TOTAL */}
+          <div className="flex justify-between mt-10 text-lg tracking-wide">
+            <span>Total</span>
+            <span className="font-medium">₹{cart.total}</span>
           </div>
 
-          <button
-            className="mt-6 bg-[#1E2D2B] text-white px-6 py-3 rounded-lg tracking-widest"
-            onClick={() => navigate("/checkout")}
-          >
-            Proceed to Checkout (COD)
-          </button>
+          {/* CTA */}
+          <div className="text-center mt-14">
+            <button
+              onClick={() => navigate("/checkout")}
+              className="bg-[#1E2D2B] text-white px-14 py-4 tracking-[0.2em] text-sm rounded-lg hover:opacity-90 transition"
+            >
+              PROCEED TO CHECKOUT
+            </button>
+
+            <p className="mt-4 text-xs tracking-wide text-gray-500">
+              Cash on Delivery Available
+            </p>
+          </div>
         </>
       )}
     </div>

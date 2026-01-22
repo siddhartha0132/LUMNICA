@@ -12,6 +12,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import AccountUser from "./pages/AccountUser";
+
+
 
 
 
@@ -32,6 +35,7 @@ export default function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/account" element={<AccountUser />} />
         </Routes>
       </div>
 

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
-const API = "http://localhost:5000/api"; // change if backend URL is different
+const API = "https://lumnica-backend.onrender.com/api";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -20,33 +21,55 @@ export default function Login() {
         password,
       });
 
-      // Save token
-      localStorage.setItem("token", res.data.accessToken);
+      const token = res.data.accessToken;
+      localStorage.setItem("token", token);
+
+      const decoded = jwtDecode(token);
+      localStorage.setItem("user", JSON.stringify(decoded));
 
       setMsg("Login successful ✓");
-      navigate("/products"); // redirect after login
+      navigate("/products");
     } catch (err) {
+      console.error(err);
       setMsg("Invalid email or password");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#F8F6F3]">
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow">
-        <h1 className="text-2xl font-semibold mb-6 text-center tracking-widest">
-          LOGIN
-        </h1>
+    <div className="min-h-screen relative flex items-center justify-center px-4 overflow-hidden">
 
+      {/* Luxury Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#F8F6F3] via-[#EFE9DF] to-[#E6DDCF]" />
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#D8C6A5]/30 rounded-full blur-3xl" />
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-[#CBB89A]/30 rounded-full blur-3xl" />
+
+      {/* Card */}
+      <div className="relative w-full max-w-md bg-[#FAF9F6]/90 backdrop-blur-xl border border-black/10 rounded-2xl px-8 py-10 shadow-sm">
+
+        {/* Heading */}
+        <h1 className="text-center text-[22px] tracking-[0.35em] uppercase text-[#1A1A1A] mb-2">
+          Welcome Back
+        </h1>
+        <p className="text-center text-sm text-black/60 mb-8">
+          Sign in to continue
+        </p>
+
+        {/* Message */}
         {msg && (
-          <p className="text-center text-sm mb-4 text-[#A38E6A]">{msg}</p>
+          <p className="text-center text-sm mb-6 text-[#A38E6A]">
+            {msg}
+          </p>
         )}
 
-        <form onSubmit={handleLogin} className="space-y-5">
+        {/* Form */}
+        <form onSubmit={handleLogin} className="space-y-6">
           <div>
-            <label className="text-sm">Email</label>
+            <label className="block text-[11px] tracking-widest uppercase mb-2">
+              Email Address
+            </label>
             <input
               type="email"
-              className="w-full border px-4 py-2 rounded-lg mt-1"
+              className="w-full bg-transparent border-b border-black/30 py-2 focus:outline-none focus:border-black transition"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -54,10 +77,12 @@ export default function Login() {
           </div>
 
           <div>
-            <label className="text-sm">Password</label>
+            <label className="block text-[11px] tracking-widest uppercase mb-2">
+              Password
+            </label>
             <input
               type="password"
-              className="w-full border px-4 py-2 rounded-lg mt-1"
+              className="w-full bg-transparent border-b border-black/30 py-2 focus:outline-none focus:border-black transition"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -66,16 +91,19 @@ export default function Login() {
 
           <button
             type="submit"
-            className="w-full bg-[#1E2D2B] text-white py-2 rounded-lg tracking-widest"
+            className="w-full mt-6 bg-[#1A1A1A] text-[#F8F6F3] py-3 text-[11px] tracking-[0.35em] uppercase hover:bg-black transition"
           >
-            Login
+            Sign In
           </button>
         </form>
 
-        {/* signup link */}
-        <p className="text-center text-sm mt-4">
+        {/* Footer */}
+        <p className="text-center text-sm mt-8 text-black/70">
           Don’t have an account?{" "}
-          <Link to="/signup" className="text-[#A38E6A] underline">
+          <Link
+            to="/signup"
+            className="underline underline-offset-4 text-[#A38E6A]"
+          >
             Create one
           </Link>
         </p>
