@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Leaf, Rabbit, MapPin, Globe, ShieldCheck, Droplets } from "lucide-react";
 
 import HeroImage from "../assets/herofinal.png";
-import Main from "../assets/Main_1.png";
+import Main from "../assets/Hero_Main_Low.png";
 import product1 from "../assets/PRODUCT1.png";
 import product2 from "../assets/PRODUCT2.png";
 import product3 from "../assets/PRODUCT3.png";
