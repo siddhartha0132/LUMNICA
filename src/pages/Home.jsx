@@ -1,23 +1,64 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Leaf, Rabbit, MapPin, Globe, ShieldCheck, Droplets } from "lucide-react";
-
-import HeroImage from "../assets/herofinal.png";
-import Main from "../assets/Hero_Main_Low.png";
-import product1 from "../assets/PRODUCT1.png";
-import product2 from "../assets/PRODUCT2.png";
+import { motion, AnimatePresence } from "framer-motion";
+import Hero1 from "../assets/herofinal.png";
+import Hero2 from "../assets/heroimage2_1.png";
+import Hero3 from "../assets/heroimage3.png";
+import Hero4 from "../assets/heroimage4.png";
+import Main from "../assets/Hero_Main_Low.png"; 
+import product1 from "../assets/PRODUCT1.png"; 
+import product2 from "../assets/PRODUCT2.png"; 
 import product3 from "../assets/PRODUCT3.png";
 
 export default function Home() {
-  return (
-    <div className="bg-[#FAF9F6] text-[#1A1A1A] font-light overflow-x-hidden">
+  const heroImages = [Hero1, Hero2, Hero3, Hero4];
+  const [index, setIndex] = React.useState(0);
 
-      {/* ===== HERO ===== */}
-      <section className="relative w-full h-[100svh] overflow-hidden">
-        <img src={HeroImage} className="absolute inset-0 w-full h-full object-cover scale-105" />
+  // Auto slide
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
+  const nextSlide = () => {
+    setIndex((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const prevSlide = () => {
+    setIndex((prev) =>
+      prev === 0 ? heroImages.length - 1 : prev - 1
+    );
+  };
+
+  return (
+    <div className="bg-[#FAF9F6] text-white overflow-hidden">
+      <section className="relative w-full h-screen overflow-hidden">
+
+        {/* Slides */}
+        <motion.div
+          className="absolute inset-0 flex w-full h-full"
+          animate={{ x: `-${index * 100}%` }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+        >
+          {heroImages.map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt=""
+              className="w-full h-screen object-cover object-center flex-shrink-0"
+            />
+          ))}
+        </motion.div>
+
+        {/* Overlay */}
         <div className="absolute inset-0 bg-black/40" />
 
-        <div className="relative z-10 h-full flex flex-col justify-center items-center text-white text-center px-6">
+        {/* Content */}
+        <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
           <p className="uppercase text-[10px] tracking-[0.35em] mb-8 text-white/70">
             Est. 2024 — Botanical Alchemy
           </p>
@@ -33,15 +74,38 @@ export default function Home() {
             </button>
           </Link>
         </div>
+
+        {/* Left Button */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-6 md:left-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition text-3xl md:text-4xl"
+        >
+          ‹
+        </button>
+
+        {/* Right Button */}
+        <button
+          onClick={nextSlide}
+          className="absolute right-6 md:right-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition text-3xl md:text-4xl"
+        >
+          ›
+        </button>
+
       </section>
+   
+  
+
+
+
 
       {/* ===== BRAND STORY ===== */}
+
       <section className="bg-white py-28 px-6 text-center">
         <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-6">
           The Lumnica Philosophy
         </p>
         <h2 className="font-serif text-3xl md:text-5xl italic mb-8">
-          Where Ayurveda meets modern Luxary
+          Where Ayurveda meets modern Luxary– Beyond Luxury
         </h2>
         <p className="max-w-3xl mx-auto text-black/60 text-[15px] leading-[1.9]">
           Every Lumnica formula is crafted in small batches using ancient Ayurvedic

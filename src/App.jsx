@@ -13,7 +13,18 @@ import Signup from "./pages/Signup";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import AccountUser from "./pages/AccountUser";
-
+import ScrollToTop from "./components/ScrollToTop";
+import Blogs from "./pages/Blogs";
+import AyurvedicHerbsForSkin from "./Blogs/Ayurvedic-herbs-for-skin";
+import ModernLifestyleAyurveda from "./Blogs/Modern-lifestyle-ayurveda";
+import Dinacharya from "./Blogs/Dinacharya-ayurvedic-daily-routine";
+import AyurvedicSkincarePrinciples from "./Blogs/Aurvedic-skincare-principles";
+import GutHealthAndSkinAyurveda from "./Blogs/Gut-health-and-skin-ayurveda";
+import RitucharyaSeasonalAyurveda from "./Blogs/Ritucharya-seasonal-ayurveda";
+import StressAndSkinAyurveda from "./Blogs/Stress-and-skin-ayurveda";
+import NaturalDetoxAyurveda from "./Blogs/Natural-detox-ayurveda";
+import SleepAndSkinRegeneration from "./Blogs/Sleep-and-skin-regeneration";
+import Abhyanga from "./Blogs/Abhyanga-oil-massage-benefits"
 
 
 
@@ -24,13 +35,24 @@ export default function App() {
       <Navbar />
 
       <div className="pt-20">
+        <ScrollToTop/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
-
+          <Route path="/blogs" element={<Blogs />}/>
           {/* new routes */}
+          <Route path="/blogs/modern-lifestyle-ayurveda" element={<ModernLifestyleAyurveda />} />
+          <Route path="/blogs/dinacharya-ayurvedic-daily-routine" element={<Dinacharya />} />
+          <Route path="/blogs/ayurvedic-skincare-principles" element={<AyurvedicSkincarePrinciples/>} />
+          <Route path="/blogs/abhyanga-oil-massage-benefits" element={<Abhyanga />} />
+          <Route path="/blogs/ayurvedic-herbs-for-skin" element={<AyurvedicHerbsForSkin />} />
+          <Route path="/blogs/gut-health-and-skin-ayurveda" element={<GutHealthAndSkinAyurveda />} />
+          <Route path="/blogs/ritucharya-seasonal-ayurveda" element={<RitucharyaSeasonalAyurveda />} />
+          <Route path="/blogs/stress-and-skin-ayurveda" element={<StressAndSkinAyurveda />} />
+          <Route path="/blogs/natural-detox-ayurveda" element={<NaturalDetoxAyurveda />} />
+          <Route path="/blogs/sleep-and-skin-regeneration" element={<SleepAndSkinRegeneration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<Cart />} />

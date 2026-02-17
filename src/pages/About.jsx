@@ -66,9 +66,10 @@ export default function About() {
 
             <h1 className="font-serif text-5xl md:text-[7.5rem] leading-[0.95] mb-14 tracking-tight">
               Less reaction. <br />
-              <span className="italic text-[#A38E6A] font-light">
-                More relationship.
-              </span>
+              <span className="italic text-white font-light">
+  More relationship.
+</span>
+
             </h1>
 
             <p className="max-w-md text-base md:text-lg text-[#1E2D2B]/70 leading-[1.9] border-l border-[#A38E6A]/40 pl-8">
