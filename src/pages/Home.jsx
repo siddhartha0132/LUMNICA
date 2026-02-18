@@ -1,135 +1,152 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Leaf, Rabbit, MapPin, Globe, ShieldCheck, Droplets } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import Hero1 from "../assets/herofinal.png";
-import Hero2 from "../assets/heroimage2_1.png";
-import Hero3 from "../assets/heroimage3.png";
-import Hero4 from "../assets/heroimage4.png";
+import { motion } from "framer-motion";
 import Main from "../assets/Hero_Main_Low.png"; 
 import product1 from "../assets/PRODUCT1.png"; 
 import product2 from "../assets/PRODUCT2.png"; 
 import product3 from "../assets/PRODUCT3.png";
-import HeroVideo from "../assets/HeroVideo.mp4"
+import HeroVideo from "../assets/HeroBanner.mp4";
+
 export default function Home() {
-return (
-  <div className="bg-[#FAF9F6] text-white overflow-hidden">
-    <section className="relative w-full h-screen overflow-hidden">
+  return (
+    <div className="bg-[#FAF9F6] text-black overflow-hidden">
+      
+      {/* ===== HERO SECTION (VIDEO ONLY) ===== */}
+      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          src={HeroVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
 
-      {/* Background Video */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src={HeroVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
+        {/* Dark Overlay - Prevents clashing and makes text pop */}
+        <div className="absolute inset-0 bg-black/50 z-10" />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
+        {/* Hero Content - Higher Z-index to stay on top */}
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 flex flex-col justify-center items-center text-center">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="uppercase text-[10px] md:text-[12px] tracking-[0.5em] mb-6 text-white/80"
+          >
+            Est. 2024 — Botanical Alchemy
+          </motion.p>
 
-      {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
-        <p className="uppercase text-[10px] tracking-[0.35em] mb-8 text-white/70">
-          Est. 2024 — Botanical Alchemy
-        </p>
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="font-serif text-[50px] md:text-[110px] leading-[1] mb-12 text-white drop-shadow-lg"
+          >
+            Sacred <br />
+            <span className="italic font-light">Skincare</span>
+          </motion.h1>
 
-        <h1 className="font-serif text-[44px] md:text-[96px] leading-[1] mb-10">
-          Sacred <br />
-          <span className="italic font-light">Skincare</span>
-        </h1>
-
-        <Link to="/products">
-          <button className="border border-white/40 px-12 py-4 text-[10px] tracking-[0.35em] uppercase hover:bg-white hover:text-black transition">
-            Explore Rituals
-          </button>
-        </Link>
-      </div>
-
-    </section>
-
-
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            <Link to="/products">
+              <button className="border border-white/60 px-14 py-5 text-[10px] tracking-[0.4em] uppercase text-white hover:bg-white hover:text-black transition-all duration-500 ease-in-out">
+                Explore Rituals
+              </button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ===== BRAND STORY ===== */}
-
-      <section className="bg-white py-28 px-6 text-center">
-        <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-6">
-          The Lumnica Philosophy
-        </p>
-        <h2 className="font-serif text-3xl md:text-5xl italic mb-8">
-          Where Ayurveda meets modern Luxary– Beyond Luxury
-        </h2>
-        <p className="max-w-3xl mx-auto text-black/60 text-[15px] leading-[1.9]">
-          Every Lumnica formula is crafted in small batches using ancient Ayurvedic
-          wisdom blended with modern cosmetic science.
-        </p>
+      <section className="bg-white py-32 px-6 text-center">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-8">
+            The Lumnica Philosophy
+          </p>
+          <h2 className="font-serif text-4xl md:text-6xl italic mb-10 text-black leading-tight">
+            Where Ayurveda meets modern Luxury – <br className="hidden md:block"/> Beyond Luxury
+          </h2>
+          <p className="text-black/60 text-[16px] md:text-[18px] leading-[2] font-light">
+            Every Lumnica formula is crafted in small batches using ancient Ayurvedic
+            wisdom blended with modern cosmetic science. We believe skincare is not a 
+            chore, but a sacred dialogue between you and nature.
+          </p>
+        </div>
       </section>
 
       {/* ===== IMAGE + STORY ===== */}
-      <section className="bg-[#FAF9F6] py-28 px-6">
-        <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
+      <section className="bg-[#FAF9F6] py-23 px-6">
+        <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-15 items-center">
+          <div className="order-2 md:order-1">
             <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-5">
               The Source
             </p>
-            <h2 className="font-serif text-3xl md:text-5xl italic mb-6">
+            <h2 className="font-serif text-3xl md:text-5xl italic mb-6 text-black">
               Raw. Potent. Pure.
             </h2>
             <p className="text-black/60 text-[15px] leading-[1.9] mb-8">
               Our herbs are wild-harvested from sacred Indian soil and cold-pressed
-              to preserve their vibrational potency.
+              to preserve their vibrational potency. We honor the cycles of the moon
+              to ensure every drop contains the maximum life-force of the plant.
             </p>
+            <div className="h-[1px] w-20 bg-[#C9A24D]" />
           </div>
 
-          <div className="relative h-[65vh] rounded-xl overflow-hidden shadow-xl">
-            <img src={Main} className="w-full h-full object-cover" />
+          <div className="relative h-[60vh] rounded-2xl overflow-hidden shadow-2xl order-1 md:order-2">
+            <img src={Main} alt="Botanical Source" className="w-full h-full object-cover transition-transform duration-1000 hover:scale-110" />
           </div>
         </div>
       </section>
 
       {/* ===== COLLECTION ===== */}
-      <section className="py-28 px-6 max-w-[1400px] mx-auto text-center">
-        <h2 className="font-serif text-3xl md:text-5xl italic mb-4">
+      <section className="py-29 px-6 max-w-[1400px] mx-auto text-center">
+        <h2 className="font-serif text-4xl md:text-6xl italic mb-4 text-black">
           Seasonal Rituals
         </h2>
-        <p className="text-[10px] tracking-[0.35em] uppercase text-black/40 mb-16">
-          Curated botanical elixirs
+        <p className="text-[10px] tracking-[0.4em] uppercase text-black/40 mb-20">
+          Curated botanical elixirs for the soul
         </p>
 
-        <div className="grid md:grid-cols-3 gap-16">
+        <div className="grid md:grid-cols-3 gap-12 lg:gap-20">
           {[ 
-            { img: product1, name: "Amrita Mridu", cat: "Hair Elixir", price: "₹475" },
-            { img: product2, name: "Amrita Snan", cat: "Body Ritual", price: "₹525" },
-            { img: product3, name: "Vata Shanti", cat: "Face Cleanser", price: "₹495" }
+            { img: product1, name: "Amrita Mridu", cat: "Hair Elixir", price: "₹199" },
+            { img: product2, name: "Amrita Snan", cat: "Body Ritual", price: "₹140" },
+            { img: product3, name: "Vata Shanti", cat: "Face Cleanser", price: "₹229" }
           ].map((p, i) => (
-            <div key={i}>
-              <div className="aspect-[3/4] bg-[#EEE] mb-6 overflow-hidden">
-                <img src={p.img} className="w-full h-full object-cover hover:scale-105 transition duration-700" />
+            <motion.div 
+              whileHover={{ y: -10 }}
+              key={i} 
+              className="group cursor-pointer"
+            >
+              <div className="aspect-[3/4] bg-[#F3EBDD] mb-8 overflow-hidden rounded-sm shadow-sm">
+                <img src={p.img} alt={p.name} className="w-full h-full object-cover group-hover:scale-110 transition duration-[1.5s]" />
               </div>
-              <h3 className="font-serif text-xl mb-1">{p.name}</h3>
-              <p className="text-[10px] tracking-[0.3em] uppercase text-black/40 mb-1">
+              <h3 className="font-serif text-2xl mb-2 text-black">{p.name}</h3>
+              <p className="text-[10px] tracking-[0.3em] uppercase text-[#C9A24D] mb-2 font-bold">
                 {p.cat}
               </p>
-              <p className="italic text-[16px]">{p.price}</p>
-            </div>
+              <p className="italic text-[18px] text-black/70 font-light">{p.price}</p>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* ===== TRUST BADGES ===== */}
-      <section className="py-28 px-6 bg-gradient-to-b from-[#F3EBDD] via-[#FAF9F6] to-[#F3EBDD] border-t border-b border-[#E7DCC6]">
+      <section className="py-32 px-6 bg-gradient-to-b from-[#F3EBDD] via-[#FAF9F6] to-[#F3EBDD] border-t border-b border-[#E7DCC6]">
         <div className="max-w-[1200px] mx-auto text-center">
-
-          <h2 className="font-serif text-2xl md:text-3xl tracking-widest uppercase mb-3 text-[#1F3D36]">
+          <h2 className="font-serif text-3xl md:text-4xl tracking-widest uppercase mb-4 text-[#1F3D36]">
             Thoughtful Commitments
           </h2>
-
-          <p className="text-[#1F3D36]/60 mb-16 max-w-2xl mx-auto text-sm">
-            Rooted in purity. Guided by nature. Created with intention.
+          <p className="text-[#1F3D36]/60 mb-20 max-w-2xl mx-auto text-[15px] italic">
+            "Rooted in purity. Guided by nature. Created with intention."
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-20">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-y-24">
             {[
               { icon: <Droplets />, title: "CLEAN FORMULATIONS", sub: "SLS & Paraben Free" },
               { icon: <Rabbit />, title: "ALWAYS VEGAN", sub: "Vegan & Cruelty Free" },
@@ -139,20 +156,19 @@ return (
               { icon: <Globe />, title: "DERM TESTED", sub: "All Skin Types" },
             ].map((badge, idx) => (
               <div key={idx} className="flex flex-col items-center group">
-                <div className="mb-6 text-[#C9A24D] group-hover:text-[#C65A2E] transition">
-                  {React.cloneElement(badge.icon, { size: 34, strokeWidth: 1.2 })}
+                <div className="mb-8 text-[#C9A24D] group-hover:text-[#C65A2E] group-hover:scale-110 transition duration-500">
+                  {React.cloneElement(badge.icon, { size: 40, strokeWidth: 1 })}
                 </div>
-                <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase mb-2 text-[#1F3D36]">
+                <h4 className="text-[12px] font-bold tracking-[0.3em] uppercase mb-3 text-[#1F3D36]">
                   {badge.title}
                 </h4>
-                <p className="text-[11px] text-[#1F3D36]/60">
+                <p className="text-[11px] text-[#1F3D36]/60 tracking-wider">
                   {badge.sub}
                 </p>
-                <div className="mt-4 w-12 h-[2px] bg-[#C9A24D] opacity-40 group-hover:opacity-100 transition" />
+                <div className="mt-6 w-16 h-[1px] bg-[#C9A24D] opacity-30 group-hover:opacity-100 group-hover:w-24 transition-all duration-700" />
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -163,18 +179,21 @@ return (
             <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-6">
               Our Ingredients
             </p>
-            <h2 className="font-serif text-3xl md:text-5xl italic mb-8">
-              Harvested. Not manufactured.
+            <h2 className="font-serif text-4xl md:text-6xl italic mb-10 text-black leading-tight">
+              Harvested. <br /> Not manufactured.
             </h2>
-            <p className="text-black/60 text-[15px] leading-[1.9]">
+            <p className="text-black/60 text-[16px] leading-[2] font-light mb-8">
               Every LUMNICA formulation begins in the soil — not in a lab.
               We partner with organic farmers who grow herbs slowly,
               respecting both land and lunar cycles. Each ingredient
               is chosen for its energetic compatibility with the skin.
             </p>
+            <button className="text-[11px] tracking-[0.3em] uppercase border-b border-[#C9A24D] pb-2 text-black hover:text-[#C9A24D] transition">
+              Meet our ingredients
+            </button>
           </div>
 
-          <div className="h-[60vh] rounded-xl overflow-hidden shadow-xl">
+          <div className="h-[70vh] rounded-2xl overflow-hidden shadow-2xl">
             <img src={product2} className="w-full h-full object-cover" alt="Lumnica Ingredients" />
           </div>
         </div>
@@ -187,51 +206,51 @@ return (
             The Lumnica Ritual
           </p>
 
-          <h2 className="font-serif text-3xl md:text-5xl italic mb-16">
+          <h2 className="font-serif text-4xl md:text-6xl italic mb-20 text-black">
             Designed to be felt, not rushed
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-20 text-left">
-            <div>
-              <span className="text-[#C9A24D] tracking-[0.4em] text-[12px] block mb-4">01</span>
-              <h3 className="font-serif text-xl mb-4">Cleanse</h3>
-              <p className="text-black/60 leading-[1.9] text-[15px]">
-                Begin by gently removing impurities while preserving the skin’s natural balance.
+          <div className="grid md:grid-cols-3 gap-16 lg:gap-24 text-left">
+            <div className="group">
+              <span className="text-[#C9A24D] tracking-[0.4em] text-[14px] font-bold block mb-6 transition-transform group-hover:translate-x-2">01</span>
+              <h3 className="font-serif text-2xl mb-5 text-black">Cleanse</h3>
+              <p className="text-black/60 leading-[1.9] text-[15px] font-light">
+                Begin by gently removing impurities while preserving the skin’s natural balance and microbiome.
               </p>
             </div>
 
-            <div>
-              <span className="text-[#C9A24D] tracking-[0.4em] text-[12px] block mb-4">02</span>
-              <h3 className="font-serif text-xl mb-4">Nourish</h3>
-              <p className="text-black/60 leading-[1.9] text-[15px]">
-                Feed the skin with botanical actives that restore hydration and cellular harmony.
+            <div className="group">
+              <span className="text-[#C9A24D] tracking-[0.4em] text-[14px] font-bold block mb-6 transition-transform group-hover:translate-x-2">02</span>
+              <h3 className="font-serif text-2xl mb-5 text-black">Nourish</h3>
+              <p className="text-black/60 leading-[1.9] text-[15px] font-light">
+                Feed the skin with botanical actives that restore hydration and cellular harmony at a deep level.
               </p>
             </div>
 
-            <div>
-              <span className="text-[#C9A24D] tracking-[0.4em] text-[12px] block mb-4">03</span>
-              <h3 className="font-serif text-xl mb-4">Protect</h3>
-              <p className="text-black/60 leading-[1.9] text-[15px]">
-                Seal the ritual with ingredients that strengthen the skin barrier and glow.
+            <div className="group">
+              <span className="text-[#C9A24D] tracking-[0.4em] text-[14px] font-bold block mb-6 transition-transform group-hover:translate-x-2">03</span>
+              <h3 className="font-serif text-2xl mb-5 text-black">Protect</h3>
+              <p className="text-black/60 leading-[1.9] text-[15px] font-light">
+                Seal the ritual with ingredients that strengthen the skin barrier and lock in the Lumnica glow.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== Luxary TESTIMONIAL ===== */}
-      <section className="bg-[#FAF9F6] py-32 px-6 text-center">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-[10px] tracking-[0.5em] uppercase text-black/40 mb-12">
+      {/* ===== TESTIMONIAL ===== */}
+      <section className="bg-[#FAF9F6] py-40 px-6 text-center">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-[10px] tracking-[0.6em] uppercase text-black/40 mb-16">
             LUMNICA Stories
           </p>
 
-          <p className="font-serif italic text-[20px] md:text-[28px] leading-relaxed text-black/70 mb-10">
+          <p className="font-serif italic text-[24px] md:text-[36px] leading-[1.6] text-black/80 mb-12">
             “Lumnica feels less like skincare and more like a daily meditation.
             My skin has never felt calmer, softer, or more alive.”
           </p>
 
-          <p className="text-[11px] tracking-[0.4em] uppercase text-black/60">
+          <p className="text-[12px] tracking-[0.5em] uppercase text-black/60">
             Simran Sethi — Jaipur
           </p>
         </div>

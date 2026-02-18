@@ -48,13 +48,15 @@ export default function About() {
       {/* ================= HERO ================= */}
       <section className="relative h-[100svh] flex items-center overflow-hidden bg-[#E7E3DB]">
         <motion.div style={{ y }} className="absolute inset-0 z-0">
-          <img
-            src={HeroImage}
-            className="w-full h-full object-cover brightness-[0.9] scale-105"
-            alt="Lumnica Ritual"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F4F1EC]/90 via-[#F4F1EC]/30 to-transparent" />
-        </motion.div>
+  <img
+    src={HeroImage}
+    className="w-full h-full object-cover brightness-[0.85] scale-105"
+    alt="Lumnica Ritual"
+  />
+
+  {/* Cinematic overlay – NO WHITE BACKGROUND */}
+  <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
+</motion.div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-8">
           <motion.div
