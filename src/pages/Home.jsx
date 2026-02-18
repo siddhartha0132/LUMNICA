@@ -10,91 +10,44 @@ import Main from "../assets/Hero_Main_Low.png";
 import product1 from "../assets/PRODUCT1.png"; 
 import product2 from "../assets/PRODUCT2.png"; 
 import product3 from "../assets/PRODUCT3.png";
-
+import HeroVideo from "../assets/HeroVideo.mp4"
 export default function Home() {
-  const heroImages = [Hero1, Hero2, Hero3, Hero4];
-  const [index, setIndex] = React.useState(0);
+return (
+  <div className="bg-[#FAF9F6] text-white overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden">
 
-  // Auto slide
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % heroImages.length);
-    }, 4000);
+      {/* Background Video */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src={HeroVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
 
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40" />
 
-  const nextSlide = () => {
-    setIndex((prev) => (prev + 1) % heroImages.length);
-  };
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+        <p className="uppercase text-[10px] tracking-[0.35em] mb-8 text-white/70">
+          Est. 2024 — Botanical Alchemy
+        </p>
 
-  const prevSlide = () => {
-    setIndex((prev) =>
-      prev === 0 ? heroImages.length - 1 : prev - 1
-    );
-  };
+        <h1 className="font-serif text-[44px] md:text-[96px] leading-[1] mb-10">
+          Sacred <br />
+          <span className="italic font-light">Skincare</span>
+        </h1>
 
-  return (
-    <div className="bg-[#FAF9F6] text-white overflow-hidden">
-      <section className="relative w-full h-screen overflow-hidden">
+        <Link to="/products">
+          <button className="border border-white/40 px-12 py-4 text-[10px] tracking-[0.35em] uppercase hover:bg-white hover:text-black transition">
+            Explore Rituals
+          </button>
+        </Link>
+      </div>
 
-        {/* Slides */}
-        <motion.div
-          className="absolute inset-0 flex w-full h-full"
-          animate={{ x: `-${index * 100}%` }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-        >
-          {heroImages.map((img, i) => (
-            <img
-              key={i}
-              src={img}
-              alt=""
-              className="w-full h-screen object-cover object-center flex-shrink-0"
-            />
-          ))}
-        </motion.div>
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40" />
-
-        {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
-          <p className="uppercase text-[10px] tracking-[0.35em] mb-8 text-white/70">
-            Est. 2024 — Botanical Alchemy
-          </p>
-
-          <h1 className="font-serif text-[44px] md:text-[96px] leading-[1] mb-10">
-            Sacred <br />
-            <span className="italic font-light">Skincare</span>
-          </h1>
-
-          <Link to="/products">
-            <button className="border border-white/40 px-12 py-4 text-[10px] tracking-[0.35em] uppercase hover:bg-white hover:text-black transition">
-              Explore Rituals
-            </button>
-          </Link>
-        </div>
-
-        {/* Left Button */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-6 md:left-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition text-3xl md:text-4xl"
-        >
-          ‹
-        </button>
-
-        {/* Right Button */}
-        <button
-          onClick={nextSlide}
-          className="absolute right-6 md:right-8 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition text-3xl md:text-4xl"
-        >
-          ›
-        </button>
-
-      </section>
-   
-  
-
+    </section>
 
 
 
