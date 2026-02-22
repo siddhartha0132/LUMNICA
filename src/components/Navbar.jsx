@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { ShoppingBag } from "lucide-react";
 import logo from "../assets/Logolumnica.png";
+import { User } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -35,9 +37,9 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50">
       {/* Top strip */}
-      <div className="bg-[#1A1A1A] text-[#D4AF37] text-[10px] tracking-[0.35em] text-center py-2 uppercase">
+      {/* <div className="bg-[#1A1A1A] text-[#D4AF37] text-[10px] tracking-[0.35em] text-center py-2 uppercase">
         We Deliver Across India & Internationally
-      </div>
+      </div> */}
 
       {/* Navbar */}
       <div className="bg-[#FAF9F6]/95 backdrop-blur-xl border-b border-black/5">
@@ -48,10 +50,10 @@ export default function Navbar() {
             ☰
           </button>
 
-          {/* Logo */}
-          <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-            <img src={logo} alt="Lumnica" className="h-9" />
-          </Link>
+         {/* Logo */}
+<Link to="/" className="absolute left-1/2 -translate-x-1/2">
+  <img src={logo} alt="Lumnica" className="h-18 w-auto" />
+</Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-12 text-[10px] uppercase tracking-[0.35em]">
@@ -67,7 +69,7 @@ export default function Navbar() {
             
             {/* Cart – Forest Essentials Style */}
             <Link to="/cart" className="relative group">
-              <span className="tracking-wide">🛍</span>
+              <ShoppingBag className="w-5 h-5 stroke-[1.5]" />
 
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-2 min-w-[14px] h-[14px] 
@@ -80,8 +82,8 @@ export default function Navbar() {
 
             {/* Account */}
             <Link to={accountPath} className="tracking-wide">
-              👤
-            </Link>
+  <User className="w-5 h-5 stroke-[1.25]" />
+</Link>
           </div>
         </div>
       </div>

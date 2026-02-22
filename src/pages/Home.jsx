@@ -7,7 +7,7 @@ import product1 from "../assets/PRODUCT1.png";
 import product2 from "../assets/PRODUCT2.png"; 
 import product3 from "../assets/PRODUCT3.png";
 import HeroVideo from "../assets/HeroBanner.mp4";
-
+import Lumnicaest from "../assets/Lumnicaest.png"
 export default function Home() {
   return (
     <div className="bg-[#FAF9F6] text-black overflow-hidden">
@@ -63,7 +63,7 @@ export default function Home() {
       </section>
 
       {/* ===== BRAND STORY ===== */}
-      <section className="bg-white py-32 px-6 text-center">
+      <section className="bg-white py-36 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-8">
             The Lumnica Philosophy
@@ -80,7 +80,7 @@ export default function Home() {
       </section>
 
       {/* ===== IMAGE + STORY ===== */}
-      <section className="bg-[#FAF9F6] py-23 px-6">
+      <section className="bg-[#FAF9F6] py-28 px-6">
         <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-15 items-center">
           <div className="order-2 md:order-1">
             <p className="text-[10px] tracking-[0.35em] uppercase text-[#C9A24D] mb-5">
@@ -98,7 +98,7 @@ export default function Home() {
           </div>
 
           <div className="relative h-[60vh] rounded-2xl overflow-hidden shadow-2xl order-1 md:order-2">
-            <img src={Main} alt="Botanical Source" className="w-full h-full object-cover transition-transform duration-1000 hover:scale-110" />
+            <img src={Lumnicaest} alt="Botanical Source" className="w-full h-full object-cover transition-transform duration-1000 hover:scale-110" />
           </div>
         </div>
       </section>
@@ -114,9 +114,9 @@ export default function Home() {
 
         <div className="grid md:grid-cols-3 gap-12 lg:gap-20">
           {[ 
-            { img: product1, name: "Amrita Mridu", cat: "Hair Elixir", price: "₹199" },
+            { img: product1, name: "Amrita Kesh", cat: "Hair Elixir", price: "₹199" },
             { img: product2, name: "Amrita Snan", cat: "Body Ritual", price: "₹140" },
-            { img: product3, name: "Vata Shanti", cat: "Face Cleanser", price: "₹229" }
+            { img: product3, name: "Amrita Mridu", cat: "Hair Cleanser", price: "₹229" }
           ].map((p, i) => (
             <motion.div 
               whileHover={{ y: -10 }}
