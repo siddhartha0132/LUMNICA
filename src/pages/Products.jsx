@@ -71,7 +71,7 @@ export default function Products() {
   }
 
   return (
-    <main className="bg-white min-h-screen pt-36 pb-20">
+    <main className="bg-white min-h-screen pt-22 pb-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
 
         <h1 className="text-3xl tracking-[0.25em] mb-12 uppercase">

@@ -46,42 +46,42 @@ export default function About() {
     <main className="bg-[#FAF8F5] text-[#1E2D2B] antialiased overflow-x-hidden">
 
       {/* ================= HERO ================= */}
-      <section className="relative h-[100svh] flex items-center overflow-hidden bg-[#E7E3DB]">
-        <motion.div style={{ y }} className="absolute inset-0 z-0">
-  <img
-    src={HeroImage}
-    className="w-full h-full object-cover brightness-[0.85] scale-105"
-    alt="Lumnica Ritual"
-  />
+      {/* ================= HERO ================= */}
+<section className="relative h-[100svh] flex items-center overflow-hidden bg-[#E7E3DB]">
+  
+  <motion.div style={{ y }} className="absolute inset-0 z-0">
+    <img
+      src={HeroImage}
+      className="w-full h-full object-cover brightness-[0.78] contrast-[0.95] scale-105"
+      alt="Lumnica Ritual"
+    />
 
-  {/* Cinematic overlay – NO WHITE BACKGROUND */}
-  <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
-</motion.div>
+    {/* Softer luxury cinematic overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent" />
+  </motion.div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-8">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-          >
-            <Eyebrow>Our Philosophy</Eyebrow>
+  <div className="relative z-10 max-w-7xl mx-auto px-8">
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+    >
+      <Eyebrow>Our Philosophy</Eyebrow>
 
-            <h1 className="font-serif text-5xl md:text-[7.5rem] leading-[0.95] mb-14 tracking-tight">
-              Less reaction. <br />
-              <span className="italic text-white font-light">
-  More relationship.
-</span>
+      <h1 className="font-serif text-5xl md:text-[7.5rem] leading-[0.95] mb-14 tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
+        Less reaction. <br />
+        <span className="italic text-[#F5EFE6] font-light">
+          More relationship.
+        </span>
+      </h1>
 
-            </h1>
-
-            <p className="max-w-md text-base md:text-lg text-[#1E2D2B]/70 leading-[1.9] border-l border-[#A38E6A]/40 pl-8">
-              LUMNICA exists to support the skin’s natural intelligence — through restraint,
-              balance, and thoughtful formulation.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
+      <p className="max-w-md text-base md:text-lg text-white/70 leading-[1.9] border-l border-[#C8A96A]/40 pl-8">
+        LUMNICA exists to support the skin’s natural intelligence — through restraint,
+        balance, and thoughtful formulation.
+      </p>
+    </motion.div>
+  </div>
+</section>
       {/* ================= BELIEF ================= */}
       <Section
         eyebrow="Our Belief"

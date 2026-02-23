@@ -8,6 +8,7 @@ import product2 from "../assets/PRODUCT2.png";
 import product3 from "../assets/PRODUCT3.png";
 import HeroVideo from "../assets/HeroBanner.mp4";
 import Lumnicaest from "../assets/Lumnicaest.png"
+import Disp from "../assets/Dispenser.MP4"
 export default function Home() {
   return (
     <div className="bg-[#FAF9F6] text-black overflow-hidden">
@@ -61,7 +62,45 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+<section className="w-full bg-white py-20 md:py-28">
+  <div className="max-w-7xl mx-auto px-6 md:px-10">
+    
+    <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
+      {/* LEFT CONTENT */}
+      <div>
+        <h2 className="text-2xl md:text-3xl tracking-wide uppercase mb-6">
+          The Perfect Formula. Uniquely Yours.
+        </h2>
+
+        <p className="text-sm md:text-base text-black/60 leading-relaxed mb-8 max-w-md">
+          Discover customised skincare designed for your unique skin concerns.
+          Each formulation is thoughtfully prepared to work in harmony with your skin,
+          combining balance, precision, and purpose.
+        </p>
+
+        <button className="border border-black px-6 py-3 text-sm tracking-wide hover:bg-black hover:text-white transition">
+          Customise Now →
+        </button>
+      </div>
+
+      {/* RIGHT VIDEO */}
+      <div className="relative w-full aspect-video bg-black overflow-hidden">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={Disp} type="video/mp4" />
+        </video>
+      </div>
+
+    </div>
+
+  </div>
+</section>
       {/* ===== BRAND STORY ===== */}
       <section className="bg-white py-36 px-6 text-center">
         <div className="max-w-4xl mx-auto">
