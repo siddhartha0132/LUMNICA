@@ -25,6 +25,13 @@ import StressAndSkinAyurveda from "./Blogs/Stress-and-skin-ayurveda";
 import NaturalDetoxAyurveda from "./Blogs/Natural-detox-ayurveda";
 import SleepAndSkinRegeneration from "./Blogs/Sleep-and-skin-regeneration";
 import Abhyanga from "./Blogs/Abhyanga-oil-massage-benefits"
+import Customized from "./components/NavbarComp/Makeup";
+import Face from "./components/NavbarComp/Face";
+import BathAndBody from "./components/NavbarComp/Bath";
+import Hair from "./components/NavbarComp/Hair";
+import Gifting from "./components/NavbarComp/Gifting";
+import Men from "./components/NavbarComp/Men";
+import Exclusive from "./components/NavbarComp/Exclusive";
 
 
 
@@ -58,6 +65,13 @@ export default function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/account" element={<AccountUser />} />
+          <Route path="/customized" element={<Customized/>}/>
+          <Route path="/face" element={<Face/>}/>
+           <Route path="/bath-body" element={<BathAndBody/>}/>
+            <Route path="/hair" element={<Hair/>}/>
+<Route path="/gifting" element={<Gifting/>}/>
+<Route path="/men" element={<Men/>}/>
+<Route path="/exclusives" element={<Exclusive/>}/>
         </Routes>
       </div>
 
