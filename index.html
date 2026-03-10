@@ -2,19 +2,159 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/Logolumnica.png" />
 
+    <!-- ═══════════════════════════════════════
+         FAVICON
+    ═══════════════════════════════════════ -->
+    <link rel="icon" type="image/png" href="/Logolumnica.png" />
+    <link rel="apple-touch-icon" href="/Logolumnica.png" />
+
+    <!-- ═══════════════════════════════════════
+         VIEWPORT & MOBILE
+    ═══════════════════════════════════════ -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>lumnica</title>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9L0PMDYSD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta name="theme-color" content="#FAF9F6" />
 
-  gtag('config', 'G-Z9L0PMDYSD');
-</script>
+    <!-- ═══════════════════════════════════════
+         PRIMARY SEO META
+    ═══════════════════════════════════════ -->
+    <title>Lumnica | Ayurvedic Skincare & Hair Care — Natural, Vegan & Cruelty Free</title>
+    <meta
+      name="description"
+      content="Lumnica offers premium Ayurvedic skincare and hair care crafted with sacred botanicals from India. Vegan, cruelty-free, SLS & paraben free. Shop hair elixirs, body rituals & customised skincare."
+    />
+    <meta
+      name="keywords"
+      content="ayurvedic skincare, natural hair care india, vegan skincare, cruelty free skincare, bhringraj hair oil, kumkumadi face oil, ayurvedic hair elixir, lumnica, customised skincare, herbal body wash, paraben free skincare india"
+    />
+    <meta name="author" content="Lumnica Skincare" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.lumnica.in/" />
+
+    <!-- ═══════════════════════════════════════
+         OPEN GRAPH (Facebook / WhatsApp / LinkedIn)
+    ═══════════════════════════════════════ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lumnica" />
+    <meta property="og:url" content="https://www.lumnica.in/" />
+    <meta
+      property="og:title"
+      content="Lumnica | Ayurvedic Skincare & Hair Care — Natural, Vegan & Cruelty Free"
+    />
+    <meta
+      property="og:description"
+      content="Premium Ayurvedic skincare crafted with sacred botanicals from India. Vegan, cruelty-free, SLS & paraben free. Shop hair elixirs, body rituals & customised skincare formulations."
+    />
+    <meta property="og:image" content="https://www.lumnica.in/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Lumnica Ayurvedic Skincare Products" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- ═══════════════════════════════════════
+         TWITTER CARD
+    ═══════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lumnicaskincare" />
+    <meta
+      name="twitter:title"
+      content="Lumnica | Ayurvedic Skincare & Hair Care"
+    />
+    <meta
+      name="twitter:description"
+      content="Premium Ayurvedic skincare crafted with sacred botanicals. Vegan, cruelty-free & paraben free. Shop now."
+    />
+    <meta name="twitter:image" content="https://www.lumnica.in/og-image.jpg" />
+
+    <!-- ═══════════════════════════════════════
+         STRUCTURED DATA — Organization
+    ═══════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lumnica",
+      "url": "https://www.lumnica.in",
+      "logo": "https://www.lumnica.in/Logolumnica.png",
+      "description": "Premium Ayurvedic skincare and hair care brand crafted with sacred botanicals from India.",
+      "foundingDate": "2024",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.instagram.com/lumnicaskincare"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": ["English", "Hindi"]
+      }
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════
+         STRUCTURED DATA — WebSite + SearchAction
+    ═══════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Lumnica",
+      "url": "https://www.lumnica.in",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.lumnica.in/products?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════
+         STRUCTURED DATA — BreadcrumbList
+    ═══════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.lumnica.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Shop",
+          "item": "https://www.lumnica.in/products"
+        }
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════
+         GOOGLE ANALYTICS (your original tag)
+    ═══════════════════════════════════════ -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9L0PMDYSD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z9L0PMDYSD');
+    </script>
+
+    <!-- ═══════════════════════════════════════
+         PERFORMANCE — PRECONNECT & DNS PREFETCH
+    ═══════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
   </head>
   <body>
     <div id="root"></div>

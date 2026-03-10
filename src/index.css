@@ -1,1 +1,48 @@
+/* IMPORTS MUST BE FIRST */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
 @import "tailwindcss";
+
+/* Global Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #FAF9F6;
+  color: #2A2A2A;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* LUMNICA Brand Colors */
+:root {
+  --primary: #1F3A2E;
+  --secondary: #E8D8C4;
+  --accent: #C89B6D;
+}
+
+/* Section spacing */
+.section {
+  padding: 80px 0;
+}
+
+/* Container */
+.container-custom {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* Premium Button */
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  padding: 12px 26px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #162c22;
+}
