@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Leaf, Rabbit, MapPin, Globe, ShieldCheck, Droplets, Star, ChevronRight, Instagram, Mail, ArrowRight, X } from "lucide-react";
+import { Helmet } from "react-helmet";
+import { Leaf, Rabbit, MapPin, Globe, ShieldCheck, Droplets, Star, ChevronRight, Instagram, Mail, ArrowRight, X, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Main from "../assets/Hero_Main_Low.png";
@@ -31,11 +32,60 @@ const StarRating = ({ rating = 5 }) => (
   </div>
 );
 
+/* ─── Countdown Timer Hook ────────────────────────────────── */
+const useCountdown = (targetHours = 47) => {
+  const getTime = () => {
+    const stored = localStorage.getItem("lumnica_offer_end");
+    if (stored) return parseInt(stored);
+    const end = Date.now() + targetHours * 60 * 60 * 1000;
+    localStorage.setItem("lumnica_offer_end", end.toString());
+    return end;
+  };
+  const [timeLeft, setTimeLeft] = useState(() => {
+    const end = getTime();
+    return Math.max(0, end - Date.now());
+  });
+  useEffect(() => {
+    const t = setInterval(() => {
+      setTimeLeft(Math.max(0, getTime() - Date.now()));
+    }, 1000);
+    return () => clearInterval(t);
+  }, []);
+  const h = String(Math.floor(timeLeft / 3600000)).padStart(2, "0");
+  const m = String(Math.floor((timeLeft % 3600000) / 60000)).padStart(2, "0");
+  const s = String(Math.floor((timeLeft % 60000) / 1000)).padStart(2, "0");
+  return { h, m, s };
+};
+
 /* ─── data ────────────────────────────────────────────────── */
 const PRODUCTS = [
-  { img: product1, name: "Amrita Kesh", cat: "Hair Elixir", price: "₹199", concern: "Hair Fall", badge: "Best Seller" },
-  { img: product2, name: "Amrita Snan", cat: "Body Ritual", price: "₹140", concern: "Dryness", badge: "New" },
-  { img: product3, name: "Amrita Mridu", cat: "Hair Cleanser", price: "₹229", concern: "Scalp Care", badge: "Top Rated" },
+  {
+    img: product1,
+    name: "Amrita Kesh",
+    cat: "Hair Elixir",
+    price: "₹199",
+    concern: "Hair Fall",
+    badge: "Best Seller",
+    alt: "Lumnica Amrita Kesh Ayurvedic hair elixir for hair fall control",
+  },
+  {
+    img: product2,
+    name: "Amrita Snan",
+    cat: "Body Ritual",
+    price: "₹140",
+    concern: "Dryness",
+    badge: "New",
+    alt: "Lumnica Amrita Snan Ayurvedic body ritual for dry skin",
+  },
+  {
+    img: product3,
+    name: "Amrita Mridu",
+    cat: "Hair Cleanser",
+    price: "₹229",
+    concern: "Scalp Care",
+    badge: "Top Rated",
+    alt: "Lumnica Amrita Mridu natural hair cleanser for scalp care",
+  },
 ];
 
 const SKIN_CONCERNS = [
@@ -75,11 +125,54 @@ const INGREDIENTS = [
   { name: "Neem", origin: "Pan-India", benefit: "Antimicrobial purifier that clarifies and soothes inflammation" },
 ];
 
+const WHY_CHOOSE = [
+  {
+    icon: "🌿",
+    title: "4,000 Years of Wisdom",
+    desc: "Every formula is rooted in classical Ayurvedic texts. We don't follow trends — we follow tradition that has stood the test of millennia.",
+  },
+  {
+    icon: "🧪",
+    title: "Small-Batch Craftsmanship",
+    desc: "Produced in small batches to ensure freshness, potency, and attention to detail that mass manufacturing simply cannot replicate.",
+  },
+  {
+    icon: "🌱",
+    title: "Zero Harmful Chemicals",
+    desc: "No parabens. No sulphates. No mineral oils. No artificial fragrance. What goes on your skin is as clean as what you'd eat.",
+  },
+  {
+    icon: "🔬",
+    title: "Modern Dermatology Meets Ayurveda",
+    desc: "Our formulations are dermatologist-tested, combining ancient botanical intelligence with contemporary cosmetic science.",
+  },
+  {
+    icon: "🤝",
+    title: "Ethical from Root to Ritual",
+    desc: "Cruelty-free, vegan, and sustainably sourced. We work directly with certified Ayurvedic farmers across India.",
+  },
+  {
+    icon: "✦",
+    title: "Personalised for Every Skin Story",
+    desc: "From customised formulations to skin-concern-based shopping, Lumnica is designed to work for your unique biology.",
+  },
+];
+
+const PAYMENT_BADGES = [
+  { label: "UPI", sub: "GPay · PhonePe · Paytm" },
+  { label: "VISA", sub: "Credit & Debit" },
+  { label: "MC", sub: "Mastercard" },
+  { label: "RuPay", sub: "Domestic Cards" },
+  { label: "EMI", sub: "No-Cost EMI" },
+  { label: "COD", sub: "Cash on Delivery" },
+];
+
 /* ─── component ───────────────────────────────────────────── */
 export default function Home() {
   const [popupOpen, setPopupOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const { h, m, s } = useCountdown(47);
 
   /* Show newsletter popup after 4 s */
   useEffect(() => {
@@ -94,6 +187,22 @@ export default function Home() {
 
   return (
     <div className="bg-[#FAF9F6] text-black overflow-hidden">
+
+      {/* ══════════════════════════════════════════════
+          SEO META TAGS
+      ══════════════════════════════════════════════ */}
+      <Helmet>
+        <title>Lumnica — Ayurvedic Skincare & Hair Care | Natural, Vegan, Cruelty-Free</title>
+        <meta
+          name="description"
+          content="Lumnica blends ancient Ayurvedic wisdom with modern luxury. Shop natural skincare, hair care, and body rituals crafted from sacred botanicals. 100% vegan, cruelty-free, and GMP certified. Made in India."
+        />
+        <meta name="keywords" content="Ayurvedic skincare, natural hair care India, vegan skincare, cruelty free beauty, Kumkumadi serum, Bhringraj oil, natural body wash, Lumnica" />
+        <meta property="og:title" content="Lumnica — Sacred Ayurvedic Skincare" />
+        <meta property="og:description" content="Ancient Ayurvedic wisdom meets modern luxury. Natural, vegan, cruelty-free skincare made in India." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://lumnica.in/" />
+      </Helmet>
 
       {/* ══════════════════════════════════════════════
           NEWSLETTER POPUP
@@ -115,6 +224,7 @@ export default function Home() {
               <button
                 onClick={() => setPopupOpen(false)}
                 className="absolute top-4 right-4 text-black/40 hover:text-black transition"
+                aria-label="Close newsletter popup"
               >
                 <X size={18} />
               </button>
@@ -122,9 +232,9 @@ export default function Home() {
               <p className="text-[10px] tracking-[0.4em] uppercase text-[#C9A24D] mb-3">
                 Welcome Gift
               </p>
-              <h3 className="font-serif text-3xl italic mb-3 text-black">
+              <h2 className="font-serif text-3xl italic mb-3 text-black">
                 10% Off Your <br /> First Ritual
-              </h3>
+              </h2>
               <p className="text-black/50 text-sm mb-7">
                 Join the Lumnica circle and receive exclusive offers, ingredient stories & early access.
               </p>
@@ -174,6 +284,7 @@ export default function Home() {
           loop
           muted
           playsInline
+          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-black/50 z-10" />
 
@@ -242,6 +353,36 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════
+          LIMITED TIME OFFER BAR
+      ══════════════════════════════════════════════ */}
+      <div className="bg-[#C9A24D] text-white py-3 px-6">
+        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-4 text-center">
+          <div className="flex items-center gap-2">
+            <Clock size={14} className="opacity-80" />
+            <span className="text-[11px] tracking-[0.3em] uppercase font-medium">
+              Limited Offer — Free Gift on Orders Above ₹799
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-[10px] tracking-wider uppercase opacity-80">Ends in:</span>
+            {[h, m, s].map((unit, i) => (
+              <React.Fragment key={i}>
+                <div className="bg-white/20 rounded px-2 py-0.5 min-w-[32px] text-center">
+                  <span className="font-mono text-sm font-bold">{unit}</span>
+                </div>
+                {i < 2 && <span className="opacity-70 font-bold">:</span>}
+              </React.Fragment>
+            ))}
+          </div>
+          <Link to="/products">
+            <span className="text-[10px] tracking-[0.3em] uppercase underline underline-offset-2 opacity-90 hover:opacity-100 cursor-pointer">
+              Shop Now →
+            </span>
+          </Link>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════
           ANNOUNCEMENT BAR
       ══════════════════════════════════════════════ */}
       <div className="bg-[#1F3D36] text-white text-[10px] tracking-[0.4em] uppercase py-3 text-center overflow-hidden">
@@ -267,7 +408,7 @@ export default function Home() {
             Every Lumnica formula is crafted in small batches using ancient Ayurvedic wisdom blended with
             modern cosmetic science. We believe skincare is not a chore, but a sacred dialogue between you and nature.
           </motion.p>
-          <motion.div {...fadeUp(0.3)} className="flex gap-10 justify-center">
+          <motion.div {...fadeUp(0.3)} className="flex gap-10 justify-center flex-wrap">
             {[["200+", "Happy Customers"], ["12+", "Sacred Botanicals"], ["3", "Formulations"]].map(([num, label]) => (
               <div key={label} className="text-center">
                 <div className="font-serif text-3xl text-[#C9A24D] mb-1">{num}</div>
@@ -295,22 +436,17 @@ export default function Home() {
                 whileHover={{ y: -8 }}
                 className="group cursor-pointer"
               >
-                <div className="relative aspect-[3/4] bg-[#F3EBDD] mb-6 overflow-hidden rounded-sm shadow-sm">
+                <div className="relative aspect-[3/4] bg-[#F3EBDD] mb-5 overflow-hidden rounded-sm shadow-sm">
                   <img
                     src={p.img}
-                    alt={p.name}
+                    alt={p.alt}
                     className="w-full h-full object-cover group-hover:scale-110 transition duration-[1.5s]"
                   />
                   <span className="absolute top-4 left-4 bg-[#1F3D36] text-white text-[9px] tracking-[0.3em] uppercase px-3 py-1">
                     {p.badge}
                   </span>
-                  <div className="absolute inset-x-0 bottom-0 bg-black/0 group-hover:bg-black/20 transition duration-500 flex items-end justify-center pb-6 opacity-0 group-hover:opacity-100">
-                    <span className="bg-white text-black text-[10px] tracking-[0.3em] uppercase px-6 py-2">
-                      Add to Cart
-                    </span>
-                  </div>
                 </div>
-                <div className="flex justify-between items-start">
+                <div className="flex justify-between items-start mb-3">
                   <div>
                     <h3 className="font-serif text-xl mb-1 text-black">{p.name}</h3>
                     <p className="text-[10px] tracking-[0.3em] uppercase text-[#C9A24D] mb-1">{p.cat}</p>
@@ -319,6 +455,13 @@ export default function Home() {
                   <p className="font-serif text-xl text-black/70">{p.price}</p>
                 </div>
                 <StarRating />
+                {/* ── Always-visible Add to Cart ── */}
+                <button
+                  onClick={(e) => { e.preventDefault(); }}
+                  className="mt-4 w-full border border-black/30 py-2.5 text-[10px] tracking-[0.3em] uppercase hover:bg-black hover:text-white hover:border-black transition duration-300"
+                >
+                  Add to Cart
+                </button>
               </motion.div>
             </Link>
           ))}
@@ -353,7 +496,7 @@ export default function Home() {
               </button>
             </div>
             <div className="relative w-full aspect-video bg-black overflow-hidden">
-              <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
+              <video className="w-full h-full object-cover" autoPlay muted loop playsInline aria-hidden="true">
                 <source src={Disp} type="video/mp4" />
               </video>
             </div>
@@ -411,7 +554,7 @@ export default function Home() {
             <div className="relative h-[55vh] rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src={Lumnicaest}
-                alt="Botanical Source"
+                alt="Lumnica Ayurvedic botanical ingredients sourced from sacred Indian farms"
                 className="w-full h-full object-cover transition-transform duration-1000 hover:scale-110"
               />
             </div>
@@ -443,9 +586,43 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════
+          WHY CHOOSE LUMNICA  ← NEW SECTION
+      ══════════════════════════════════════════════ */}
+      <section className="py-28 px-6 bg-white">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div {...fadeUp()} className="text-center mb-16">
+            <p className="text-[10px] tracking-[0.4em] uppercase text-[#C9A24D] mb-3">The Lumnica Difference</p>
+            <h2 className="font-serif text-4xl md:text-5xl italic text-black mb-4">
+              Why Choose Lumnica
+            </h2>
+            <p className="text-black/50 text-[15px] max-w-lg mx-auto leading-relaxed">
+              In a world full of skincare noise, here is what makes every Lumnica ritual different.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E7DCC6]">
+            {WHY_CHOOSE.map((item, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp(i * 0.08)}
+                className="bg-white p-10 group hover:bg-[#FAF9F6] transition duration-300"
+              >
+                <span className="text-3xl mb-5 block">{item.icon}</span>
+                <h3 className="font-serif text-xl italic text-black mb-3 group-hover:text-[#1F3D36] transition">
+                  {item.title}
+                </h3>
+                <p className="text-black/55 text-[13px] leading-[1.8]">{item.desc}</p>
+                <div className="mt-6 w-8 h-[1px] bg-[#C9A24D] group-hover:w-16 transition-all duration-500" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════
           BUNDLES / KITS
       ══════════════════════════════════════════════ */}
-      <section className="py-24 px-6 bg-white">
+      <section className="py-24 px-6 bg-[#FAF9F6]">
         <div className="max-w-5xl mx-auto text-center">
           <motion.p {...fadeUp()} className="text-[10px] tracking-[0.4em] uppercase text-[#C9A24D] mb-3">
             Save More
@@ -544,6 +721,21 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          {/* ── Certification badges ── */}
+          <motion.div {...fadeUp(0.2)} className="mt-20 pt-12 border-t border-[#E7DCC6]">
+            <p className="text-[10px] tracking-[0.4em] uppercase text-black/40 mb-8">Certified & Recognised By</p>
+            <div className="flex flex-wrap justify-center gap-6">
+              {["GMP Certified", "Ayurvedic Formulation", "Cruelty Free Int'l", "IFRA Certified", "ISO 22716"].map((cert) => (
+                <div
+                  key={cert}
+                  className="border border-[#C9A24D]/40 px-6 py-3 text-[11px] tracking-[0.2em] uppercase text-[#1F3D36] font-medium"
+                >
+                  ✦ {cert}
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -589,13 +781,12 @@ export default function Home() {
             @lumnicaskincare
           </motion.h2>
 
-          {/* Placeholder grid — replace with real Instagram feed */}
           <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
             {Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className="aspect-square bg-[#F3EBDD] overflow-hidden group cursor-pointer">
                 <img
                   src={i % 3 === 0 ? product1 : i % 3 === 1 ? product2 : product3}
-                  alt={`Instagram ${i}`}
+                  alt={`Lumnica skincare product ritual on Instagram post ${i + 1}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100"
                 />
               </div>
@@ -642,6 +833,41 @@ export default function Home() {
           <p className="text-[10px] text-black/30 mt-4 tracking-wider">
             No spam. Unsubscribe anytime.
           </p>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════
+          PAYMENT TRUST BADGES  ← NEW SECTION
+      ══════════════════════════════════════════════ */}
+      <section className="bg-white py-12 px-6 border-t border-[#E7DCC6]">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-black/30 mb-8">
+            Secure Payments — 256-bit SSL Encrypted
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-6">
+            {PAYMENT_BADGES.map((b) => (
+              <div
+                key={b.label}
+                className="border border-[#E7DCC6] px-5 py-3 text-center min-w-[80px] hover:border-[#C9A24D]/50 transition"
+              >
+                <div className="font-bold text-[13px] text-[#1F3D36] tracking-wide">{b.label}</div>
+                <div className="text-[9px] text-black/40 tracking-wider mt-0.5">{b.sub}</div>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap justify-center gap-6 mt-6">
+            {[
+              { icon: "🔒", label: "SSL Secure Checkout" },
+              { icon: "↩️", label: "15-Day Easy Returns" },
+              { icon: "🚚", label: "Free Shipping Above ₹499" },
+              { icon: "📞", label: "Support: +91 XXXXX XXXXX" },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center gap-2 text-[11px] text-black/50 tracking-wide">
+                <span>{item.icon}</span>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

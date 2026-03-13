@@ -38,6 +38,13 @@ import Gifting from "./components/NavbarComp/Gifting";
 import Men from "./components/NavbarComp/Men";
 import Exclusive from "./components/NavbarComp/Exclusive";
 
+// New pages
+import Hospitality from "./pages/Hospitality";
+import FAQ from "./pages/FAQ";
+import Ingredients from "./pages/Ingredients";
+import Sustainability from "./pages/Sustainability";
+
+
 export default function App() {
   return (
     <Router>
@@ -84,6 +91,12 @@ export default function App() {
           <Route path="/gifting" element={<Gifting />} />
           <Route path="/men" element={<Men />} />
           <Route path="/exclusives" element={<Exclusive />} />
+
+          {/* New pages */}
+<Route path="/hospitality" element={<Hospitality />} />
+<Route path="/faq" element={<FAQ />} />
+<Route path="/ingredients" element={<Ingredients />} />
+<Route path="/sustainability" element={<Sustainability />} />
         </Routes>
       </main>
 
