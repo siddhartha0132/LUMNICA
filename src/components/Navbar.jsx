@@ -14,10 +14,12 @@ import {
   X,
   ChevronDown,
 } from "lucide-react";
-t
+
 import logo from "../assets/Logolumnica.png";
 
-export default function Navbar() {
+
+
+export default function Navbar(){
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
