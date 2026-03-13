@@ -134,7 +134,7 @@ export default function Men() {
             className="px-4 py-2 text-black w-64"
           />
           <button className="px-6 bg-white text-black">
-            Subscribe
+            Subscribe PLS
           </button>
         </div>
       </section>
