@@ -14,6 +14,7 @@ import {
   X,
   ChevronDown,
 } from "lucide-react";
+t
 import logo from "../assets/Logolumnica.png";
 
 export default function Navbar() {
