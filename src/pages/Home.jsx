@@ -11,6 +11,7 @@ import product3 from "../assets/PRODUCT3.png";
 import HeroVideo from "../assets/HeroBanner.mp4";
 import Lumnicaest from "../assets/Lumnicaest.png";
 import Disp from "../assets/Dispenser.MP4";
+import Gifting from "../assets/Gifting1.png"
 
 /* ─── helpers ─────────────────────────────────────────────── */
 const fadeUp = (delay = 0) => ({
@@ -418,7 +419,79 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+    {/* ══════════════════════════════════════════════
+          CORPORATE GIFTING
+      ══════════════════════════════════════════════ */}
+      <section className="py-28 px-6 bg-[#FAF9F6]">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Image */}
+          <motion.div {...fadeUp()} className="relative w-full overflow-hidden rounded-sm shadow-xl">
+  <img
+    src={Gifting}
+    alt="Lumnica corporate gifting — premium Ayurvedic gift sets for businesses"
+    className="w-full h-auto hover:scale-105 transition duration-[1.5s]"
+  />
+  <div className="absolute top-5 left-5 bg-[#C9A24D] text-white text-[9px] tracking-[0.35em] uppercase px-4 py-2">
+    Corporate Exclusive
+  </div>
+</motion.div>
 
+            {/* Content */}
+            <motion.div {...fadeUp(0.15)}>
+              <p className="text-[10px] tracking-[0.4em] uppercase text-[#C9A24D] mb-5">
+                For Businesses & Teams
+              </p>
+              <h2 className="font-serif text-4xl md:text-5xl italic text-black mb-6 leading-tight">
+                Gifting That <br /> Leaves a Mark
+              </h2>
+              <p className="text-black/60 text-[15px] leading-[1.9] mb-8 max-w-md">
+                Curate meaningful corporate gifts rooted in Ayurvedic luxury. Whether it's client
+                appreciation, employee wellness kits, or festive hampers — we craft every box
+                with intention, elegance, and your brand's story in mind.
+              </p>
+
+              {/* Feature list */}
+              <div className="space-y-4 mb-10">
+                {[
+                  { icon: "✦", text: "Custom branding & bespoke packaging" },
+                  { icon: "✦", text: "Bulk orders with dedicated account support" },
+                  { icon: "✦", text: "Curated hampers for every occasion & budget" },
+                  { icon: "✦", text: "Pan-India bulk delivery with tracking" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <span className="text-[#C9A24D] text-xs mt-0.5">{item.icon}</span>
+                    <p className="text-black/65 text-[13px] tracking-wide">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex gap-4 flex-wrap">
+                <Link to="/corporate-gifting">
+                  <button className="bg-[#1F3D36] text-white px-10 py-4 text-[11px] tracking-[0.4em] uppercase hover:bg-[#C9A24D] transition-all duration-500">
+                    Explore Gift Sets
+                  </button>
+                </Link>
+                <Link to="/contact">
+                  <button className="border border-black/30 px-10 py-4 text-[11px] tracking-[0.4em] uppercase hover:bg-black hover:text-white transition-all duration-500">
+                    Request a Quote
+                  </button>
+                </Link>
+              </div>
+
+              {/* Mini trust stats */}
+              <div className="mt-12 pt-8 border-t border-[#E7DCC6] flex gap-10 flex-wrap">
+                {[["50+", "Corporate Clients"], ["500+", "Hampers Delivered"], ["100%", "Custom Packaging"]].map(([num, label]) => (
+                  <div key={label} className="text-center">
+                    <div className="font-serif text-2xl text-[#C9A24D] mb-1">{num}</div>
+                    <div className="text-[10px] tracking-[0.3em] uppercase text-black/40">{label}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
       {/* ══════════════════════════════════════════════
           BEST SELLERS
       ══════════════════════════════════════════════ */}
