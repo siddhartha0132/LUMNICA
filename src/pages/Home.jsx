@@ -8,7 +8,7 @@ import Main from "../assets/Hero_Main_Low.png";
 import product1 from "../assets/PRODUCT1.png";
 import product2 from "../assets/PRODUCT2.png";
 import product3 from "../assets/PRODUCT3.png";
-import HeroVideo from "../assets/HeroBanner.mp4";
+import HeroVideo from "../assets/LumnicaAi.mp4";
 import Lumnicaest from "../assets/Lumnicaest.png";
 import Disp from "../assets/Dispenser.MP4";
 import Gifting from "../assets/Gifting1.png"
