@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import FloatingAiButton from "./components/FloatingAiButton";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -43,7 +44,7 @@ import Hospitality from "./pages/Hospitality";
 import FAQ from "./pages/FAQ";
 import Ingredients from "./pages/Ingredients";
 import Sustainability from "./pages/Sustainability";
-
+import LumnicaAi from "./components/Lumnica/LumnicaAi";
 
 export default function App() {
   return (
@@ -62,6 +63,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/LumnicaAi" element={<LumnicaAi/>} />
 
           {/* Blogs */}
           <Route path="/blogs" element={<Blogs />} />
@@ -102,6 +104,9 @@ export default function App() {
 
       {/* FOOTER */}
       <Footer />
+
+      {/* FLOATING AI BUTTON */}
+      <FloatingAiButton />
 
     </Router>
   );
