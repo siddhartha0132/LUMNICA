@@ -895,41 +895,22 @@ export default function LumnicaAi() {
   // ── Step handlers ──
   const handleCameraAnalyze = async (videoEl, canvasEl) => {
     setStep(2);
-    setLoadingMsg("Analysing your skin in real-time…");
+    setLoadingMsg("Capturing your skin from camera…");
     try {
-      const result = await runLiveSkinAnalysis(videoEl, canvasEl, {
-        roboflowKey: null,
-        roboflowModel: null,
-      });
+      // runLiveSkinAnalysis now captures a real frame and sends it
+      // directly to /api/analyzeSkin — same NVIDIA Vision pipeline as upload.
+      setLoadingMsg("Analysing your skin with AI…");
+      const result = await runLiveSkinAnalysis(videoEl, canvasEl);
+
       if (result.error) throw new Error(result.error);
 
-      const { skinData: mlData, needsFallback } = result;
+      // Backend already returns normalized skinData — use it directly.
+      const sd = result.skinData;
+      setSkinData(sd);
 
-      if (needsFallback) {
-        setLoadingMsg("Enhancing results with AI…");
-        await new Promise((resolve, reject) => {
-          canvasEl.toBlob(async (blob) => {
-            try {
-              const formData = new FormData();
-              formData.append("image", blob, "face.jpg");
-              formData.append("mlData", JSON.stringify(mlData));
-              const resp = await fetch(`${API_URL}/analyzeSkinML`, { method: "POST", body: formData });
-              if (!resp.ok) throw new Error("Fallback analysis failed");
-              const data = await resp.json();
-              const converted = convertMLData(data.skinData);
-              setSkinData(converted);
-              await loadQuiz(converted);
-              setStep(3);
-              resolve();
-            } catch (e) { reject(e); }
-          }, "image/jpeg", 0.8);
-        });
-      } else {
-        const converted = convertMLData(mlData);
-        setSkinData(converted);
-        await loadQuiz(converted);
-        setStep(3);
-      }
+      setLoadingMsg("Crafting your personalised questionnaire…");
+      await loadQuiz(sd);
+      setStep(3);
     } catch (e) {
       setError(e.message);
       setStep(1);
